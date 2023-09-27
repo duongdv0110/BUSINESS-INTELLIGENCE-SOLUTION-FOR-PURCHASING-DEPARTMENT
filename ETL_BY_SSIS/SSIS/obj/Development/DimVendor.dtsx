@@ -1,0 +1,1530 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/22/2023 3:21:04 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DUONGDO"
+  DTS:CreatorName="DUONGDO\duong"
+  DTS:DTSID="{416FDD2E-AAD7-4EEB-A5DE-0DE3F39F4CAD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{C7297740-3C80-4842-AA68-B2A301C8075D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DUONGDO\DODUONG.AdventureWorks2019]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0ED1FADE-B36F-407D-9784-7174F0F61FF1}"
+      DTS:ObjectName="DUONGDO\DODUONG.AdventureWorks2019">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DUONGDO\DODUONG;Initial Catalog=AdventureWorks2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{0ED1FADE-B36F-407D-9784-7174F0F61FF1}DUONGDO\DODUONG.AdventureWorks2019;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C2BAFCDA-FF1E-4EFA-9889-F7348C9C7B96}"
+      DTS:ObjectName="DUONGDO\DODUONG.DW_Purchasing">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DUONGDO\DODUONG;Initial Catalog=DW_Purchasing;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{C2BAFCDA-FF1E-4EFA-9889-F7348C9C7B96}DUONGDO\DODUONG.DW_Purchasing;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2A67E34D-C090-47F2-8E20-59F0B410E128}"
+      DTS:ObjectName="DUONGDO\DODUONG.DW_Purchasing 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DUONGDO\DODUONG;Initial Catalog=DW_Purchasing;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{2A67E34D-C090-47F2-8E20-59F0B410E128}DUONGDO\DODUONG.DW_Purchasing 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{47343DD2-2203-4FCD-9B12-33D17EDBF995}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[DIMVendor]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].Columns[GeographyKey]"
+                      cachedDataType="i4"
+                      cachedName="GeographyKey"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[GeographyKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].Columns[VendorID]"
+                      cachedDataType="i4"
+                      cachedName="VendorID"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[VendorID]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].Columns[VendorName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="VendorName"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[VendorName]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].Columns[CreditRating]"
+                      cachedDataType="ui1"
+                      cachedName="CreditRating"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreditRating]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[CreditRating]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].Columns[ActiveFlag]"
+                      cachedDataType="bool"
+                      cachedName="ActiveFlag"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFlag]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[ActiveFlag]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].Columns[PreferredVendorStatus]"
+                      cachedDataType="bool"
+                      cachedName="PreferredVendorStatus"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PreferredVendorStatus]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[PreferredVendorStatus]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[VendorKey]"
+                      dataType="i4"
+                      name="VendorKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeographyKey]"
+                      dataType="i4"
+                      name="GeographyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[VendorID]"
+                      dataType="i4"
+                      name="VendorID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[VendorName]"
+                      dataType="wstr"
+                      length="50"
+                      name="VendorName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[CreditRating]"
+                      dataType="ui1"
+                      name="CreditRating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFlag]"
+                      dataType="bool"
+                      name="ActiveFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[PreferredVendorStatus]"
+                      dataType="bool"
+                      name="PreferredVendorStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActiveFrom]"
+                      dataType="dbTimeStamp"
+                      name="ActiveFrom" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ActiveTo]"
+                      dataType="dbTimeStamp"
+                      name="ActiveTo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dw].[DIMGeography]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dw].[DIMGeography]) [refTable]
+where [refTable].[AddressID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="GeographyKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AddressID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="City" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PostalCode" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryRegionCode" dataType="DT_WSTR" length="3" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NameCountry" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ActiveFrom" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ActiveTo" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[AddressID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup.Inputs[Lookup Input].Columns[AddressID]"
+                      cachedDataType="i4"
+                      cachedName="AddressID"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[AddressID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">AddressID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[GeographyKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[GeographyKey]"
+                      name="GeographyKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">GeographyKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dw].[DIMVendor] SET [ActiveFlag] = ?,[CreditRating] = ?,[GeographyKey] = ?,[PreferredVendorStatus] = ?,[VendorName] = ? WHERE [VendorID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[ActiveFlag]"
+                      cachedDataType="bool"
+                      cachedName="ActiveFlag"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[ActiveFlag]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[CreditRating]"
+                      cachedDataType="ui1"
+                      cachedName="CreditRating"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[CreditRating]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[GeographyKey]"
+                      cachedDataType="i4"
+                      cachedName="GeographyKey"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[GeographyKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[PreferredVendorStatus]"
+                      cachedDataType="bool"
+                      cachedName="PreferredVendorStatus"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[PreferredVendorStatus]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[VendorID]"
+                      cachedDataType="i4"
+                      cachedName="VendorID"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].Columns[VendorName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="VendorName"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="bool"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="ui1"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="bool"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Command 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dw].[DIMVendor] SET [ActiveFlag] = ?,[CreditRating] = ?,[GeographyKey] = ?,[PreferredVendorStatus] = ?,[VendorName] = ? WHERE [VendorID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Command 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ActiveFlag]"
+                      cachedDataType="bool"
+                      cachedName="ActiveFlag"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[ActiveFlag]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[CreditRating]"
+                      cachedDataType="ui1"
+                      cachedName="CreditRating"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[CreditRating]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[GeographyKey]"
+                      cachedDataType="i4"
+                      cachedName="GeographyKey"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[GeographyKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[PreferredVendorStatus]"
+                      cachedDataType="bool"
+                      cachedName="PreferredVendorStatus"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[PreferredVendorStatus]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[VendorID]"
+                      cachedDataType="i4"
+                      cachedName="VendorID"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[VendorName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="VendorName"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="bool"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="ui1"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="bool"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Command 1.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Command 1.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ActiveFlag], [CreditRating], [GeographyKey], [PreferredVendorStatus], [VendorID], [VendorName] FROM [dw].[DIMVendor]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[ActiveFlag]"
+                      cachedDataType="bool"
+                      cachedName="ActiveFlag"
+                      externalMetadataColumnId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ActiveFlag]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[ActiveFlag]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[CreditRating]"
+                      cachedDataType="ui1"
+                      cachedName="CreditRating"
+                      externalMetadataColumnId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CreditRating]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[CreditRating]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[GeographyKey]"
+                      cachedDataType="i4"
+                      cachedName="GeographyKey"
+                      externalMetadataColumnId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[GeographyKey]"
+                      lineageId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output].Columns[GeographyKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[PreferredVendorStatus]"
+                      cachedDataType="bool"
+                      cachedName="PreferredVendorStatus"
+                      externalMetadataColumnId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PreferredVendorStatus]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[PreferredVendorStatus]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[VendorID]"
+                      cachedDataType="i4"
+                      cachedName="VendorID"
+                      externalMetadataColumnId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[VendorID]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[VendorName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="VendorName"
+                      externalMetadataColumnId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[VendorName]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[ActiveFlag]"
+                      dataType="bool"
+                      name="ActiveFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[CreditRating]"
+                      dataType="ui1"
+                      name="CreditRating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[GeographyKey]"
+                      dataType="i4"
+                      name="GeographyKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[PreferredVendorStatus]"
+                      dataType="bool"
+                      name="PreferredVendorStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[VendorID]"
+                      dataType="i4"
+                      name="VendorID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[VendorName]"
+                      dataType="wstr"
+                      length="50"
+                      name="VendorName" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\VendorSource"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="VendorSource"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select v.BusinessEntityID as VendorID,b.AddressID, v.Name as VendorName, v.CreditRating,v.ActiveFlag,v.PreferredVendorStatus
+
+from [Person].[BusinessEntityAddress] b
+join Purchasing.Vendor v on b.BusinessEntityID=v.BusinessEntityID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\VendorSource.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.AdventureWorks2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.AdventureWorks2019]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[VendorID]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorID]"
+                      name="VendorID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[AddressID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[AddressID]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[AddressID]"
+                      name="AddressID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[VendorName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[VendorName]"
+                      name="VendorName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[CreditRating]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[CreditRating]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[CreditRating]"
+                      name="CreditRating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[ActiveFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[ActiveFlag]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[ActiveFlag]"
+                      name="ActiveFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[PreferredVendorStatus]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[PreferredVendorStatus]"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].Columns[PreferredVendorStatus]"
+                      name="PreferredVendorStatus"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[VendorID]"
+                      dataType="i4"
+                      name="VendorID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[AddressID]"
+                      dataType="i4"
+                      name="AddressID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[VendorName]"
+                      dataType="wstr"
+                      length="50"
+                      name="VendorName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[CreditRating]"
+                      dataType="ui1"
+                      name="CreditRating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[ActiveFlag]"
+                      dataType="bool"
+                      name="ActiveFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output].ExternalColumns[PreferredVendorStatus]"
+                      dataType="bool"
+                      name="PreferredVendorStatus" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[VendorID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[VendorID]"
+                      name="VendorID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[AddressID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[AddressID]"
+                      name="AddressID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[VendorName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[VendorName]"
+                      name="VendorName" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[CreditRating]"
+                      dataType="ui1"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[CreditRating]"
+                      name="CreditRating" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[ActiveFlag]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[ActiveFlag]"
+                      name="ActiveFlag" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[PreferredVendorStatus]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[PreferredVendorStatus]"
+                      name="PreferredVendorStatus" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Changing Attribute Updates Output]"
+              endId="Package\Data Flow Task\OLE DB Command 1.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\Data Flow Task\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Inferred Member Updates Output]"
+              endId="Package\Data Flow Task\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Inferred Member Updates Output"
+              startId="Package\Data Flow Task\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[New Output]"
+              endId="Package\Data Flow Task\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="New Output"
+              startId="Package\Data Flow Task\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\VendorSource.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="269.166655970945,54.6000004339218" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\Data Flow Task\Lookup"
+          TopLeft="252.7,107.1" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Data Flow Task\Slowly Changing Dimension"
+          TopLeft="205.1,208.7" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Data Flow Task\OLE DB Command 1"
+          TopLeft="453.1,310.3" />
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\Data Flow Task\OLE DB Command"
+          TopLeft="225.5,310.3" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Data Flow Task\VendorSource"
+          TopLeft="227.5,5.49999999999984" />
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Data Flow Task\Insert Destination"
+          TopLeft="5.50000000000009,310.3" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="309.1,148.7">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Inferred Member Updates Output]"
+          TopLeft="309.1,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-74.40298828125,20.4208984375,148.8059765625,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Changing Attribute Updates Output]"
+          TopLeft="359.1,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="182,60"
+              Start="0,0"
+              End="182,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5063291139241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5063291139241"
+                    Point2="0,20.5063291139241"
+                    Point3="4,20.5063291139241" />
+                  <mssgle:LineSegment
+                    End="178,20.5063291139241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="178,20.5063291139241"
+                    Point2="182,20.5063291139241"
+                    Point3="182,24.5063291139241" />
+                  <mssgle:LineSegment
+                    End="182,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="12.46609375,25.5063291139241,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="299.5,47.0999999999998">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.59999999999991,60.0000000000002"
+              Start="0,0"
+              End="9.59999999999991,52.5000000000002">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.0000000000001"
+                    Point2="0,30.0000000000001"
+                    Point3="4,30.0000000000001" />
+                  <mssgle:LineSegment
+                    End="5.59999999999991,30.0000000000001" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.59999999999991,30.0000000000001"
+                    Point2="9.59999999999991,30.0000000000001"
+                    Point3="9.59999999999991,34.0000000000001" />
+                  <mssgle:LineSegment
+                    End="9.59999999999991,52.5000000000002" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[New Output]"
+          TopLeft="259.1,250.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-174,60"
+              Start="0,0"
+              End="-174,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5063291139241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5063291139241"
+                    Point2="0,20.5063291139241"
+                    Point3="-4,20.5063291139241" />
+                  <mssgle:LineSegment
+                    End="-170,20.5063291139241" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-170,20.5063291139241"
+                    Point2="-174,20.5063291139241"
+                    Point3="-174,24.5063291139241" />
+                  <mssgle:LineSegment
+                    End="-174,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-114.09138671875,25.5063291139241,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dw].[DIMGeography]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{C2BAFCDA-FF1E-4EFA-9889-F7348C9C7B96}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dw].[DIMVendor]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DimVendorSource.Outputs[OLE DB Source Output].Columns[ActiveFlag]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ActiveFlag&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DimVendorSource.Outputs[OLE DB Source Output].Columns[CreditRating]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;CreditRating&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup.Outputs[Lookup Match Output].Columns[GeographyKey]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;GeographyKey&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DimVendorSource.Outputs[OLE DB Source Output].Columns[PreferredVendorStatus]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;PreferredVendorStatus&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DimVendorSource.Outputs[OLE DB Source Output].Columns[VendorID]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;VendorID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;DimVendorSource.Outputs[OLE DB Source Output].Columns[VendorName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;VendorName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;false&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;true&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\VendorSource">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

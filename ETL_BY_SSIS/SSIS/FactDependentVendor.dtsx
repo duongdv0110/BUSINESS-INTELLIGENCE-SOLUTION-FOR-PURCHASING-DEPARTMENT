@@ -1,0 +1,2833 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/23/2023 10:10:49 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DUONGDO"
+  DTS:CreatorName="DUONGDO\duong"
+  DTS:DTSID="{27FF196E-E18A-428F-8BF5-81D741B72890}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{A0916B8F-D697-42C7-8734-50C7F6217323}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DUONGDO\DODUONG.AdventureWorks2019]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D5F32CD5-965D-4BDF-B1DF-344F933E308E}"
+      DTS:ObjectName="DUONGDO\DODUONG.AdventureWorks2019">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DUONGDO\DODUONG;Initial Catalog=AdventureWorks2019;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{D5F32CD5-965D-4BDF-B1DF-344F933E308E}DUONGDO\DODUONG.AdventureWorks2019;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A6BB8451-4208-4E02-A95E-748FEA47A0AC}"
+      DTS:ObjectName="DUONGDO\DODUONG.DW_Purchasing">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DUONGDO\DODUONG;Initial Catalog=DW_Purchasing;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{A6BB8451-4208-4E02-A95E-748FEA47A0AC}DUONGDO\DODUONG.DW_Purchasing;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DF741A41-DA04-4729-9037-2EF2E74DDF8D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\AdventureWorksSource"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="AdventureWorksSource"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">WITH AvgPriceTable AS (
+    SELECT ProductID, SUM(LastReceiptCost) / COUNT(DISTINCT BusinessEntityID) AS AvgPrice
+    FROM [Purchasing].[ProductVendor]
+    GROUP BY ProductID
+)
+SELECT pv.ProductID, pv.BusinessEntityID AS VendorID,  pc.TotalVendorOfProduct,	 
+       pv.LastReceiptCost AS UnitPrice, ap.AvgPrice,max(t.TransactionDate) as LastTransactionDate, 
+       CASE 
+           WHEN (pv.LastReceiptCost &gt; 0.95*ap.AvgPrice and pv.LastReceiptCost &lt;=ap.AvgPrice)  THEN 10 
+           ELSE CASE 
+               WHEN pv.LastReceiptCost &lt;= 0.95*ap.AvgPrice and pv.LastReceiptCost &gt;= 0.9*ap.AvgPrice THEN 9 
+               ELSE CASE 
+                   WHEN pv.LastReceiptCost &lt;= 0.9*ap.AvgPrice and pv.LastReceiptCost &gt;= 0.85*ap.AvgPrice THEN 8 
+				    ELSE CASE 
+						WHEN pv.LastReceiptCost &lt;= 0.85*ap.AvgPrice THEN 7  
+                   ELSE CASE 
+                       WHEN pv.LastReceiptCost &gt; ap.AvgPrice and  pv.LastReceiptCost &lt; 1.05*ap.AvgPrice THEN  6 
+					 ELSE CASE 
+                       WHEN pv.LastReceiptCost &gt;1.05* ap.AvgPrice and  pv.LastReceiptCost &lt; 1.1*ap.AvgPrice THEN  5
+					    ELSE CASE 
+							WHEN pv.LastReceiptCost &gt;1.1* ap.AvgPrice  THEN  4
+                   END 
+               END 
+           END 
+       END 
+	   end 
+	   end 
+	   end AS RatingVendor
+FROM [Purchasing].[ProductVendor] pv
+JOIN [Purchasing].[Vendor] v ON pv.BusinessEntityID = v.BusinessEntityID
+JOIN (
+    SELECT ProductID, COUNT(DISTINCT BusinessEntityID) AS TotalVendorOfProduct
+    FROM [Purchasing].[ProductVendor]
+    GROUP BY ProductID
+) pc ON pv.ProductID = pc.ProductID
+JOIN AvgPriceTable ap ON pv.ProductID = ap.ProductID
+join Production.TransactionHistory t on pv.ProductID=t.ProductID
+group by pv.ProductID, pv.BusinessEntityID ,  pc.TotalVendorOfProduct,	 
+       pv.LastReceiptCost , ap.AvgPrice
+ORDER BY pv.ProductID, pv.BusinessEntityID DESC</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\AdventureWorksSource.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.AdventureWorks2019]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.AdventureWorks2019]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[VendorID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[VendorID]"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[VendorID]"
+                      name="VendorID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[AvgPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[AvgPrice]"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[AvgPrice]"
+                      name="AvgPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[TotalVendorOfProduct]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[TotalVendorOfProduct]"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[TotalVendorOfProduct]"
+                      name="TotalVendorOfProduct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[RatingVendor]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[RatingVendor]"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[RatingVendor]"
+                      name="RatingVendor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[LastTransactionDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[LastTransactionDate]"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[LastTransactionDate]"
+                      name="LastTransactionDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                      dataType="i4"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[VendorID]"
+                      dataType="i4"
+                      name="VendorID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[AvgPrice]"
+                      dataType="cy"
+                      name="AvgPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[TotalVendorOfProduct]"
+                      dataType="i4"
+                      name="TotalVendorOfProduct" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[RatingVendor]"
+                      dataType="i4"
+                      name="RatingVendor" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].ExternalColumns[LastTransactionDate]"
+                      dataType="dbTimeStamp"
+                      name="LastTransactionDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[VendorID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[VendorID]"
+                      name="VendorID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[TotalVendorOfProduct]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[TotalVendorOfProduct]"
+                      name="TotalVendorOfProduct" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      name="UnitPrice" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[AvgPrice]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[AvgPrice]"
+                      name="AvgPrice" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[LastTransactionDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[LastTransactionDate]"
+                      name="LastTransactionDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[RatingVendor]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[RatingVendor]"
+                      name="RatingVendor" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[RatingVendor]"
+                      cachedDataType="i4"
+                      cachedName="RatingVendor"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[RatingVendor]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[Rating]"
+                      cachedDataType="i4"
+                      cachedName="Rating"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Rating]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[INSERT]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="INSERT"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Rating]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(Rating)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[UPDATE]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="UPDATE"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[RatingVendor]} != #{Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Rating]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">RatingVendor != Rating</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\FactDependentVendor_DW"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="FactDependentVendor_DW"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[FACTDependentVendor]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\FactDependentVendor_DW.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[VendorKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[VendorKey]"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[VendorKey]"
+                      name="VendorKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[TotalVendorOfProduct]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[TotalVendorOfProduct]"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[TotalVendorOfProduct]"
+                      name="TotalVendorOfProduct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[UnitPrice]"
+                      name="UnitPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[AvgPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[AvgPrice]"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[AvgPrice]"
+                      name="AvgPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[Rating]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[Rating]"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[Rating]"
+                      name="Rating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[LastTransactionDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[LastTransactionDate]"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[LastTransactionDate]"
+                      name="LastTransactionDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[TimeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[TimeKey]"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[TimeKey]"
+                      name="TimeKey"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[VendorKey]"
+                      dataType="i4"
+                      name="VendorKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[TotalVendorOfProduct]"
+                      dataType="i4"
+                      name="TotalVendorOfProduct" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[AvgPrice]"
+                      dataType="cy"
+                      name="AvgPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[Rating]"
+                      dataType="i4"
+                      name="Rating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[LastTransactionDate]"
+                      dataType="dbTimeStamp"
+                      name="LastTransactionDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].ExternalColumns[TimeKey]"
+                      dataType="i4"
+                      name="TimeKey" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[ProductKey]"
+                      name="ProductKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[VendorKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[VendorKey]"
+                      name="VendorKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[TimeKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[TimeKey]"
+                      name="TimeKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[TotalVendorOfProduct]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[TotalVendorOfProduct]"
+                      name="TotalVendorOfProduct" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[UnitPrice]"
+                      name="UnitPrice" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[AvgPrice]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[AvgPrice]"
+                      name="AvgPrice" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[LastTransactionDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[LastTransactionDate]"
+                      name="LastTransactionDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[Rating]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[Rating]"
+                      name="Rating" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Insert_FactDenpendentVendor"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert_FactDenpendentVendor"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dw].[FACTDependentVendor]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].Columns[AvgPrice]"
+                      cachedDataType="cy"
+                      cachedName="AvgPrice"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[AvgPrice]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AvgPrice]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].Columns[TotalVendorOfProduct]"
+                      cachedDataType="i4"
+                      cachedName="TotalVendorOfProduct"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[TotalVendorOfProduct]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[TotalVendorOfProduct]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].Columns[LastTransactionDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastTransactionDate"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[LastTransactionDate]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[LastTransactionDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].Columns[RatingVendor]"
+                      cachedDataType="i4"
+                      cachedName="RatingVendor"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[RatingVendor]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].Columns[VendorKey]"
+                      cachedDataType="i4"
+                      cachedName="VendorKey"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[VendorKey]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[VendorKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].Columns[TimeKey]"
+                      cachedDataType="i4"
+                      cachedName="TimeKey"
+                      cachedSortKeyPosition="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[TimeKey]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[TimeKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[VendorKey]"
+                      dataType="i4"
+                      name="VendorKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[TimeKey]"
+                      dataType="i4"
+                      name="TimeKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[TotalVendorOfProduct]"
+                      dataType="i4"
+                      name="TotalVendorOfProduct" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[UnitPrice]"
+                      dataType="cy"
+                      name="UnitPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[AvgPrice]"
+                      dataType="cy"
+                      name="AvgPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[LastTransactionDate]"
+                      dataType="dbTimeStamp"
+                      name="LastTransactionDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input].ExternalColumns[Rating]"
+                      dataType="i4"
+                      name="Rating" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert_FactDenpendentVendor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Insert_FactDenpendentVendor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Insert_FactDenpendentVendor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Lookup_ProductKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_ProductKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dw].[DIMProduct]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dw].[DIMProduct]) [refTable]
+where [refTable].[ProductID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SubCategoryKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FinishedGoodsFlag" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReorderPoint" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductNumber" dataType="DT_WSTR" length="25" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MakeFlag" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ActiveFrom" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ActiveTo" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[ProductID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Lookup_ProductKey.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Lookup_ProductKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup_ProductKey.Inputs[Lookup Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[ProductID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProductID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup_ProductKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup Match Output].Columns[ProductKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup Match Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProductKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup_ProductKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup_ProductKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Lookup_TimeKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_TimeKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dw].[DIMTime]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dw].[DIMTime]) [refTable]
+where [refTable].[FullDateAlternateKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TimeKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FullDateAlternateKey" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayNumberOfWeek" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EnglishDayNameOfWeek" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1258"/&gt;&lt;referenceColumn name="DayNumberOfMonth" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DayNumberOfYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WeekNumberOfYear" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EnglishMonthName" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1258"/&gt;&lt;referenceColumn name="MonthNumberOfYear" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarQuarter" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CalendarSemester" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalQuarter" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalYear" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FiscalSemester" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[LastTransactionDate]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Lookup_TimeKey.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Lookup_TimeKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup_TimeKey.Inputs[Lookup Input].Columns[LastTransactionDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastTransactionDate"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[LastTransactionDate]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">FullDateAlternateKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup_TimeKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup Match Output].Columns[TimeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup Match Output].Columns[TimeKey]"
+                      name="TimeKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">TimeKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup_TimeKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup_TimeKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Lookup_VendorKey"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_VendorKey"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dw].[DIMVendor]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dw].[DIMVendor]) [refTable]
+where [refTable].[VendorID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="VendorKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="GeographyKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VendorID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VendorName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CreditRating" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ActiveFlag" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PreferredVendorStatus" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ActiveFrom" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ActiveTo" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[VendorID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Lookup_VendorKey.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Lookup_VendorKey.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Lookup_VendorKey.Inputs[Lookup Input].Columns[VendorID]"
+                      cachedDataType="i4"
+                      cachedName="VendorID"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[VendorID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">VendorID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup_VendorKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup Match Output].Columns[VendorKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup Match Output].Columns[VendorKey]"
+                      name="VendorKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">VendorKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup_VendorKey.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Lookup_VendorKey.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[ProductKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[VendorKey]"
+                      cachedDataType="i4"
+                      cachedName="VendorKey"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[VendorKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[TimeKey]"
+                      cachedDataType="i4"
+                      cachedName="TimeKey"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[TimeKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AvgPrice]"
+                      cachedDataType="cy"
+                      cachedName="AvgPrice"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[AvgPrice]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[TotalVendorOfProduct]"
+                      cachedDataType="i4"
+                      cachedName="TotalVendorOfProduct"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[TotalVendorOfProduct]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[LastTransactionDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastTransactionDate"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[LastTransactionDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[RatingVendor]"
+                      cachedDataType="i4"
+                      cachedName="RatingVendor"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[RatingVendor]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[ProductKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[VendorKey]"
+                      cachedDataType="i4"
+                      cachedName="VendorKey"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[VendorKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[TimeKey]"
+                      cachedDataType="i4"
+                      cachedName="TimeKey"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[TimeKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[Rating]"
+                      cachedDataType="i4"
+                      cachedName="Rating"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[Rating]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[UnitPrice]"
+                      name="UnitPrice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[UnitPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AvgPrice]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[AvgPrice]"
+                      name="AvgPrice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[AvgPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[TotalVendorOfProduct]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[TotalVendorOfProduct]"
+                      name="TotalVendorOfProduct">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[TotalVendorOfProduct]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[LastTransactionDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[LastTransactionDate]"
+                      name="LastTransactionDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[LastTransactionDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[RatingVendor]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[RatingVendor]"
+                      name="RatingVendor">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[RatingVendor]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Rating]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Rating]"
+                      name="Rating">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input].Columns[Rating]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[ProductKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[VendorKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[VendorKey]"
+                      name="VendorKey"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[VendorKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[TimeKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[TimeKey]"
+                      name="TimeKey"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input].Columns[TimeKey]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort_AdventureWorks"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort_AdventureWorks"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input].Columns[ProductID]"
+                      cachedDataType="i4"
+                      cachedName="ProductID"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[ProductID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input].Columns[VendorID]"
+                      cachedDataType="i4"
+                      cachedName="VendorID"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[VendorID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[UnitPrice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input].Columns[AvgPrice]"
+                      cachedDataType="cy"
+                      cachedName="AvgPrice"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[AvgPrice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input].Columns[TotalVendorOfProduct]"
+                      cachedDataType="i4"
+                      cachedName="TotalVendorOfProduct"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[TotalVendorOfProduct]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input].Columns[RatingVendor]"
+                      cachedDataType="i4"
+                      cachedName="RatingVendor"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[RatingVendor]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input].Columns[LastTransactionDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastTransactionDate"
+                      lineageId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[LastTransactionDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      lineageId="Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup Match Output].Columns[ProductKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input].Columns[VendorKey]"
+                      cachedDataType="i4"
+                      cachedName="VendorKey"
+                      lineageId="Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup Match Output].Columns[VendorKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input].Columns[TimeKey]"
+                      cachedDataType="i4"
+                      cachedName="TimeKey"
+                      lineageId="Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup Match Output].Columns[TimeKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[ProductID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[ProductID]"
+                      name="ProductID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[ProductID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[VendorID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[VendorID]"
+                      name="VendorID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[VendorID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[UnitPrice]"
+                      name="UnitPrice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[UnitPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[AvgPrice]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[AvgPrice]"
+                      name="AvgPrice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[AvgPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[TotalVendorOfProduct]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[TotalVendorOfProduct]"
+                      name="TotalVendorOfProduct">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[TotalVendorOfProduct]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[RatingVendor]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[RatingVendor]"
+                      name="RatingVendor">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[RatingVendor]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[LastTransactionDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[LastTransactionDate]"
+                      name="LastTransactionDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output].Columns[LastTransactionDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[ProductKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup Match Output].Columns[ProductKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[VendorKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[VendorKey]"
+                      name="VendorKey"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup Match Output].Columns[VendorKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[TimeKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output].Columns[TimeKey]"
+                      name="TimeKey"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup Match Output].Columns[TimeKey]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort_FactDependentVendor"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort_FactDependentVendor"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort_FactDependentVendor.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Inputs[Sort Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[ProductKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Inputs[Sort Input].Columns[VendorKey]"
+                      cachedDataType="i4"
+                      cachedName="VendorKey"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[VendorKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Inputs[Sort Input].Columns[TotalVendorOfProduct]"
+                      cachedDataType="i4"
+                      cachedName="TotalVendorOfProduct"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[TotalVendorOfProduct]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Inputs[Sort Input].Columns[UnitPrice]"
+                      cachedDataType="cy"
+                      cachedName="UnitPrice"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[UnitPrice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Inputs[Sort Input].Columns[AvgPrice]"
+                      cachedDataType="cy"
+                      cachedName="AvgPrice"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[AvgPrice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Inputs[Sort Input].Columns[Rating]"
+                      cachedDataType="i4"
+                      cachedName="Rating"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[Rating]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Inputs[Sort Input].Columns[LastTransactionDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastTransactionDate"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[LastTransactionDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Inputs[Sort Input].Columns[TimeKey]"
+                      cachedDataType="i4"
+                      cachedName="TimeKey"
+                      lineageId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[TimeKey]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[ProductKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[ProductKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[VendorKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[VendorKey]"
+                      name="VendorKey"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[VendorKey]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[TotalVendorOfProduct]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[TotalVendorOfProduct]"
+                      name="TotalVendorOfProduct">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[TotalVendorOfProduct]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[UnitPrice]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[UnitPrice]"
+                      name="UnitPrice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[UnitPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[AvgPrice]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[AvgPrice]"
+                      name="AvgPrice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[AvgPrice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[Rating]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[Rating]"
+                      name="Rating">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[Rating]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[LastTransactionDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[LastTransactionDate]"
+                      name="LastTransactionDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[LastTransactionDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[TimeKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output].Columns[TimeKey]"
+                      name="TimeKey"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output].Columns[TimeKey]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Update_FactDenpendentVendor"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update_FactDenpendentVendor"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE dw.[FACTDependentVendor]
+SET [Rating] =?
+WHERE
+[VendorKey] =? 
+AND [ProductKey] =?
+AND [TimeKey]=?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Update_FactDenpendentVendor.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  connectionManagerRefId="Package.ConnectionManagers[DUONGDO\DODUONG.DW_Purchasing]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].Columns[Rating]"
+                      cachedDataType="i4"
+                      cachedName="Rating"
+                      externalMetadataColumnId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[Rating]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].Columns[ProductKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductKey"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[ProductKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].Columns[VendorKey]"
+                      cachedDataType="i4"
+                      cachedName="VendorKey"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[VendorKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].Columns[TimeKey]"
+                      cachedDataType="i4"
+                      cachedName="TimeKey"
+                      cachedSortKeyPosition="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output].Columns[TimeKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Update_FactDenpendentVendor.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Update_FactDenpendentVendor.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update_FactDenpendentVendor.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Update_FactDenpendentVendor.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Update_FactDenpendentVendor.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Update_FactDenpendentVendor.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[INSERT]"
+              endId="Package\Data Flow Task\Insert_FactDenpendentVendor.Inputs[OLE DB Destination Input]"
+              name="INSERT"
+              startId="Package\Data Flow Task\Conditional Split.Outputs[INSERT]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task\Lookup_VendorKey.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Lookup_ProductKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output1]"
+              endId="Package\Data Flow Task\Lookup_TimeKey.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Lookup_VendorKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output2]"
+              endId="Package\Data Flow Task\Sort_AdventureWorks.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Lookup_TimeKey.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Merge Join Output]"
+              endId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Lookup_ProductKey.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\AdventureWorksSource.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+              endId="Package\Data Flow Task\Sort_FactDependentVendor.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\FactDependentVendor_DW.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort_AdventureWorks.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output1]"
+              endId="Package\Data Flow Task\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort_FactDependentVendor.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[UPDATE]"
+              endId="Package\Data Flow Task\Update_FactDenpendentVendor.Inputs[OLE DB Command Input]"
+              name="UPDATE"
+              startId="Package\Data Flow Task\Conditional Split.Outputs[UPDATE]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="292.85714784447,77.2352952008429" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Data Flow Task\Sort_FactDependentVendor"
+          TopLeft="481.428579627251,324.247063124139" />
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\Data Flow Task\FactDependentVendor_DW"
+          TopLeft="484.047627290901,43.0901964359218" />
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\Data Flow Task\Update_FactDenpendentVendor"
+          TopLeft="520.535723150385,726.465693223229" />
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Data Flow Task\Lookup_TimeKey"
+          TopLeft="207.142860670479,313.264709448319" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Data Flow Task\Lookup_VendorKey"
+          TopLeft="209.285717849829,230.176473816373" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Data Flow Task\Merge Join"
+          TopLeft="424.32143227239,505.20588897545" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Data Flow Task\Sort_AdventureWorks"
+          TopLeft="199.107146247918,409.117652796544" />
+        <NodeLayout
+          Size="222.4,41.6"
+          Id="Package\Data Flow Task\Insert_FactDenpendentVendor"
+          TopLeft="228.035713315618,725.794125610157" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\Data Flow Task\Conditional Split"
+          TopLeft="411.440483129146,613.122556173884" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\Data Flow Task\Lookup_ProductKey"
+          TopLeft="213.392860776916,127.897060617237" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Data Flow Task\AdventureWorksSource"
+          TopLeft="211.190479787028,41.8039221549118" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[UPDATE]"
+          TopLeft="513.040483129146,654.722556173884">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="121.495240021239,71.7431370493453"
+              Start="0,0"
+              End="121.495240021239,64.2431370493453">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.1387510477341" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.1387510477341"
+                    Point2="0,29.1387510477341"
+                    Point3="4,29.1387510477341" />
+                  <mssgle:LineSegment
+                    End="117.495240021239,29.1387510477341" />
+                  <mssgle:CubicBezierSegment
+                    Point1="117.495240021239,29.1387510477341"
+                    Point2="121.495240021239,29.1387510477341"
+                    Point3="121.495240021239,33.1387510477341" />
+                  <mssgle:LineSegment
+                    End="121.495240021239,64.2431370493453" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="42.0857254793697,34.1387510477341,37.3237890625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="585.428579627251,365.847063124139">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-76.0404806881943,139.358825851311"
+              Start="0,0"
+              End="-76.0404806881943,131.858825851311">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.5955967850453" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,78.5955967850453"
+                    Point2="0,82.5955967850453"
+                    Point3="-4,82.5955967850453" />
+                  <mssgle:LineSegment
+                    End="-72.0404806881943,82.5955967850453" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-72.0404806881943,82.5955967850453"
+                    Point2="-76.0404806881943,82.5955967850453"
+                    Point3="-76.0404806881943,86.5955967850453" />
+                  <mssgle:LineSegment
+                    End="-76.0404806881943,131.858825851311" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="289.507146247918,450.717652796544">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179.347619357806,54.4882361789061"
+              Start="0,0"
+              End="179.347619357806,46.9882361789061">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.2942472962785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.2942472962785"
+                    Point2="0,32.2942472962785"
+                    Point3="4,32.2942472962785" />
+                  <mssgle:LineSegment
+                    End="175.347619357806,32.2942472962785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="175.347619357806,32.2942472962785"
+                    Point2="179.347619357806,32.2942472962785"
+                    Point3="179.347619357806,36.2942472962785" />
+                  <mssgle:LineSegment
+                    End="179.347619357806,46.9882361789061" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+          TopLeft="586.138103459076,84.6901964359218">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,239.556866688217"
+              Start="0,0"
+              End="0,232.056866688217">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,232.056866688217" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="303.291670281972,83.4039221549118">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.4931384623253"
+              Start="0,0"
+              End="0,36.9931384623253">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.9931384623253" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Merge Join Output]"
+          TopLeft="488.880957700768,546.80588897545">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.3166671984339"
+              Start="0,0"
+              End="0,58.8166671984339">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.8166671984339" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output2]"
+          TopLeft="292.925003459198,354.864709448319">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.2529433482249"
+              Start="0,0"
+              End="0,46.7529433482249">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.7529433482249" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,17.5717841741125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output1]"
+          TopLeft="297.014289260154,271.776473816373">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.488235631946"
+              Start="0,0"
+              End="0,33.988235631946">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.988235631946" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,11.189430315973,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="299.539289313372,169.497060617237">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.679413199136"
+              Start="0,0"
+              End="0,53.179413199136">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.179413199136" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,20.785019099568,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[INSERT]"
+          TopLeft="464.240483129146,654.722556173884">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-125.004769813528,71.0715694362733"
+              Start="0,0"
+              End="-125.004769813528,63.5715694362733">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.8659912787326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.8659912787326"
+                    Point2="0,28.8659912787326"
+                    Point3="-4,28.8659912787326" />
+                  <mssgle:LineSegment
+                    End="-121.004769813528,28.8659912787326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-121.004769813528,28.8659912787326"
+                    Point2="-125.004769813528,28.8659912787326"
+                    Point3="-125.004769813528,32.8659912787326" />
+                  <mssgle:LineSegment
+                    End="-125.004769813528,63.5715694362733" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-80.092697406764,33.8659912787326,35.180625,9.5341796875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\FactDependentVendor_DW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup_TimeKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dw].[DIMTime]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup_VendorKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dw].[DIMVendor]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Insert_FactDenpendentVendor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Lookup_ProductKey">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dw].[DIMProduct]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\AdventureWorksSource">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

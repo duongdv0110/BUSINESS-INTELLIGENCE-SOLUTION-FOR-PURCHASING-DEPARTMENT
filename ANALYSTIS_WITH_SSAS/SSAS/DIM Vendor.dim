@@ -1,0 +1,386 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="c6a8dfe4-a528-4cce-bace-cdd9bb7a66e6" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DIM Vendor</ID>
+  <Name>DIM Vendor</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="870028ff-0e1c-49d3-ad95-29008e45211a">
+    <DataSourceViewID>DW Purchasing</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="ebc170a5-2a3c-43d9-9ea2-ef7dc36d8171">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="45d306ec-38f5-43b9-ba15-cf7c0fb60e1a">
+      <ID>Vendor Key</ID>
+      <Name>Vendor Key</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="07e9e702-d645-40cb-8d45-ef3b03ea91de">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="01cef45b-c2a4-4346-87f1-5263dbc37a3d">
+            <TableID>dw_DIMVendor</TableID>
+            <ColumnID>VendorKey</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="2c1da772-f6fd-49de-be3f-c78c24e3eabb">
+          <AttributeID>Vendor ID</AttributeID>
+          <Name>Vendor ID</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4692f581-339a-4c3f-b6a8-628285e3d4bc">
+          <AttributeID>Vendor Name</AttributeID>
+          <Name>Vendor Name</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="7978cb2d-8ccb-4b49-bc33-ecc3186c49c3">
+          <AttributeID>Credit Rating</AttributeID>
+          <Name>Credit Rating</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="beda0fba-9ba5-4129-bb7b-4af690f14712">
+          <AttributeID>Active Flag</AttributeID>
+          <Name>Active Flag</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="e6de4ce9-6c7a-4636-a5c1-9eeb7e616a9a">
+          <AttributeID>Preferred Vendor Status</AttributeID>
+          <Name>Preferred Vendor Status</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5052f9a7-c669-41ef-9b66-4aeefc0afe03">
+          <AttributeID>Active From</AttributeID>
+          <Name>Active From</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="865572bd-e092-4891-89c5-93e247e51228">
+          <AttributeID>Active To</AttributeID>
+          <Name>Active To</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b757376f-6c65-4272-96f5-3f44daca09fb">
+          <AttributeID>Geography Key</AttributeID>
+          <Name>Geography Key</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="04d8a80d-657a-4a1e-b3d8-529eef4c37d7">
+      <ID>Vendor ID</ID>
+      <Name>Vendor ID</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="be6dffba-7def-4d0f-8c2b-de09dfc5a788">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="602ad615-a100-4b6c-8275-845f393212c3">
+            <TableID>dw_DIMVendor</TableID>
+            <ColumnID>VendorID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="39271d66-7337-4f10-9939-0a425c518d05">
+      <ID>Vendor Name</ID>
+      <Name>Vendor Name</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="83191ed0-008b-4acf-88c1-f426e4d9f668">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="af42eae7-b107-4220-8382-c3f09c92054c">
+            <TableID>dw_DIMVendor</TableID>
+            <ColumnID>VendorName</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="47c23bd7-f9dc-42d8-8279-9a123aabf130">
+      <ID>Credit Rating</ID>
+      <Name>Credit Rating</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="42097cb0-8d99-4f86-b612-96aa891affc3">
+          <DataType>UnsignedTinyInt</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c2eabd2d-ef7a-4c62-a51b-b36452629950">
+            <TableID>dw_DIMVendor</TableID>
+            <ColumnID>CreditRating</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="7333b013-6967-4fe0-9515-a4ddcc1b8e21">
+      <ID>Active Flag</ID>
+      <Name>Active Flag</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6c47fddf-d2b2-4c6c-b4e3-e80d26db2748">
+          <DataType>Boolean</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ddb19134-929f-4c5d-8104-fd1c7569dfac">
+            <TableID>dw_DIMVendor</TableID>
+            <ColumnID>ActiveFlag</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="dfe42fc1-9847-43e4-b72f-e9ed6dbf6bd5">
+      <ID>Preferred Vendor Status</ID>
+      <Name>Preferred Vendor Status</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bc96e7be-9289-4851-964d-9a66f74e1e24">
+          <DataType>Boolean</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e05009fe-d240-495d-ba35-a7fbc2c6b964">
+            <TableID>dw_DIMVendor</TableID>
+            <ColumnID>PreferredVendorStatus</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f9e73729-6a7f-40f0-8fd1-b6e0474ba996">
+      <ID>Active From</ID>
+      <Name>Active From</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7e0203b7-1819-4a8e-b464-1e47d26fa09c">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="72678c91-b6d4-4871-9f5b-98313dfe3a0b">
+            <TableID>dw_DIMVendor</TableID>
+            <ColumnID>ActiveFrom</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b069319e-56d6-4153-82b3-3dd32304d693">
+      <ID>Active To</ID>
+      <Name>Active To</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="cdbcb5fd-bf7c-4ad5-bcb1-5b5e92582f97">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e782d2c2-7c5e-48d8-9efd-1de13825dff2">
+            <TableID>dw_DIMVendor</TableID>
+            <ColumnID>ActiveTo</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="2aa6734d-70c1-48fe-a16c-4c0cee0d49be">
+      <ID>Geography Key</ID>
+      <Name>Geography Key</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f7d30897-0cf7-425e-b3a3-85ec594fdb23">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9156c100-eb7c-4509-9e01-27a824681217">
+            <TableID>dw_DIMGeography</TableID>
+            <ColumnID>GeographyKey</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="77c5da7b-c499-4b94-8e98-dec57ddb79fd">
+          <AttributeID>Address ID</AttributeID>
+          <Name>Address ID</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4feb2cb9-a2ec-4338-9873-1b1591a5abda">
+          <AttributeID>City</AttributeID>
+          <Name>City</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="26e319ce-7861-44ad-abfb-18c45bd3043c">
+          <AttributeID>Postal Code</AttributeID>
+          <Name>Postal Code</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="9689adfe-a384-46e0-a4df-856b1625970c">
+          <AttributeID>Country Region Code</AttributeID>
+          <Name>Country Region Code</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="1ef17b12-a21c-429c-aab8-c65f2137df13">
+          <AttributeID>Name Country</AttributeID>
+          <Name>Name Country</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="63b4fce7-e1c5-4e97-8ef2-b165c775fa15">
+          <AttributeID>DIM Geography - Active From</AttributeID>
+          <Name>DIM Geography - Active From</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="096be7be-d61a-44b7-a1c3-74a87ecbb886">
+          <AttributeID>DIM Geography - Active To</AttributeID>
+          <Name>DIM Geography - Active To</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3d45f06c-820f-4185-a819-7be6fbd49509">
+      <ID>Address ID</ID>
+      <Name>Address ID</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c77002e7-942b-4199-832a-2c4715ce0b8b">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5883e998-6726-4afc-b768-c6231a873d42">
+            <TableID>dw_DIMGeography</TableID>
+            <ColumnID>AddressID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="d674dd24-ef50-487e-bb43-c66a8a171314">
+      <ID>City</ID>
+      <Name>City</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8534552a-e8df-4385-bcce-fb3adec9b623">
+          <DataType>WChar</DataType>
+          <DataSize>30</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f18f5401-ab26-44d4-bab0-2fb6015f0612">
+            <TableID>dw_DIMGeography</TableID>
+            <ColumnID>City</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3b0d8a6d-f8cd-41db-b133-5d0cff82721f">
+      <ID>Postal Code</ID>
+      <Name>Postal Code</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="307df750-71b1-4ff0-ae07-8860beec54d7">
+          <DataType>WChar</DataType>
+          <DataSize>15</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4586c680-8378-4489-8c2c-a76659e639cb">
+            <TableID>dw_DIMGeography</TableID>
+            <ColumnID>PostalCode</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a0d11ec4-c95f-48b5-b259-2ed9322266a5">
+      <ID>Country Region Code</ID>
+      <Name>Country Region Code</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="cc0c9281-a732-420f-99a3-3643a6a0086e">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ccc5e5a4-1a54-4f77-8f91-08aab641c82e">
+            <TableID>dw_DIMGeography</TableID>
+            <ColumnID>CountryRegionCode</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="fc790999-023e-4862-91ed-d230e53cb6d9">
+      <ID>Name Country</ID>
+      <Name>Name Country</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="288101bd-8baa-46e5-a61d-a270b2119b5b">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a620b7c0-5de6-4165-8934-57a8f984fa36">
+            <TableID>dw_DIMGeography</TableID>
+            <ColumnID>NameCountry</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="40f7248a-8ed5-4c53-88d3-caa4135f17ec">
+      <ID>DIM Geography - Active From</ID>
+      <Name>DIM Geography - Active From</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="3e38558a-ab71-4468-8a8e-a6a4c83583f6">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e3205846-7ce2-49f8-9d1d-f862adea6697">
+            <TableID>dw_DIMGeography</TableID>
+            <ColumnID>ActiveFrom</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a801b4cd-ca5f-4b88-9645-a6ca797def6a">
+      <ID>DIM Geography - Active To</ID>
+      <Name>DIM Geography - Active To</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e341859e-65fd-4d25-b316-6892fd47b8ce">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a6b327f4-ce19-48bf-a2e8-c3ad6199b578">
+            <TableID>dw_DIMGeography</TableID>
+            <ColumnID>ActiveTo</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

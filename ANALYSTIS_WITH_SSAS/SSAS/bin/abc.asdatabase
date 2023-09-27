@@ -1,0 +1,3394 @@
+﻿<Database xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DW_Purchasing</ID>
+  <Name>DW_Purchasing</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <LastUpdate>0001-01-01T00:00:00Z</LastUpdate>
+  <DataSourceImpersonationInfo>
+    <ImpersonationMode>Default</ImpersonationMode>
+    <ImpersonationInfoSecurity>Unchanged</ImpersonationInfoSecurity>
+  </DataSourceImpersonationInfo>
+  <Dimensions>
+    <Dimension>
+      <ID>DIM Vendor</ID>
+      <Name>DIM Vendor</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <Annotations>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+          <Value>
+            <dds xmlns="">
+              <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="4" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1133" scrolltop="-81" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="6922" y="10859" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+                <font>
+                  <ddsxmlobjectstreamwrapper binary="01a300009001b0300100065461686f6d61" />
+                </font>
+                <mouseicon>
+                  <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+                </mouseicon>
+              </diagram>
+              <layoutmanager>
+                <ddsxmlobj />
+              </layoutmanager>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMGeography" left="221" top="6506" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3768" height="3747" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e0000b80e0000a30e0000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMGeography" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMVendor" left="20" top="0" logicalid="2" controlid="2" masterid="0" hint1="0" hint2="0" width="4170" height="4106" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e00004a1000000a100000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMVendor" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="1706" top="3806" logicalid="3" controlid="3" masterid="0" hint1="0" hint2="0" width="799" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_DIMVendor_DIMGeography]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="1" destid="2" sourceattachpoint="6" destattachpoint="7" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="2105" y="6506" />
+                  <point x="2105" y="4106" />
+                </connector>
+              </ddscontrol>
+            </dds>
+          </Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+          <Value>false</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+          <Value>-1133</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+          <Value>-81</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+          <Value>20</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+          <Value>0</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+          <Value>100</Value>
+        </Annotation>
+      </Annotations>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Source xsi:type="DataSourceViewBinding">
+        <DataSourceViewID>DW Purchasing</DataSourceViewID>
+      </Source>
+      <UnknownMember>Visible</UnknownMember>
+      <ErrorConfiguration>
+        <KeyNotFound>ReportAndStop</KeyNotFound>
+        <KeyDuplicate>ReportAndStop</KeyDuplicate>
+        <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+      </ErrorConfiguration>
+      <CurrentStorageMode>Molap</CurrentStorageMode>
+      <Attributes>
+        <Attribute>
+          <ID>Vendor Key</ID>
+          <Name>Vendor Key</Name>
+          <Usage>Key</Usage>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <NullProcessing>UnknownMember</NullProcessing>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMVendor</TableID>
+                <ColumnID>VendorKey</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <AttributeRelationships>
+            <AttributeRelationship>
+              <AttributeID>Vendor ID</AttributeID>
+              <Name>Vendor ID</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Vendor Name</AttributeID>
+              <Name>Vendor Name</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Credit Rating</AttributeID>
+              <Name>Credit Rating</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Active Flag</AttributeID>
+              <Name>Active Flag</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Preferred Vendor Status</AttributeID>
+              <Name>Preferred Vendor Status</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Active From</AttributeID>
+              <Name>Active From</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Active To</AttributeID>
+              <Name>Active To</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Geography Key</AttributeID>
+              <Name>Geography Key</Name>
+            </AttributeRelationship>
+          </AttributeRelationships>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Vendor ID</ID>
+          <Name>Vendor ID</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMVendor</TableID>
+                <ColumnID>VendorID</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Vendor Name</ID>
+          <Name>Vendor Name</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>50</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMVendor</TableID>
+                <ColumnID>VendorName</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Credit Rating</ID>
+          <Name>Credit Rating</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>UnsignedTinyInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMVendor</TableID>
+                <ColumnID>CreditRating</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Active Flag</ID>
+          <Name>Active Flag</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Boolean</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMVendor</TableID>
+                <ColumnID>ActiveFlag</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Preferred Vendor Status</ID>
+          <Name>Preferred Vendor Status</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Boolean</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMVendor</TableID>
+                <ColumnID>PreferredVendorStatus</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Active From</ID>
+          <Name>Active From</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMVendor</TableID>
+                <ColumnID>ActiveFrom</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Active To</ID>
+          <Name>Active To</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMVendor</TableID>
+                <ColumnID>ActiveTo</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Geography Key</ID>
+          <Name>Geography Key</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <NullProcessing>UnknownMember</NullProcessing>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMGeography</TableID>
+                <ColumnID>GeographyKey</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <AttributeRelationships>
+            <AttributeRelationship>
+              <AttributeID>Address ID</AttributeID>
+              <Name>Address ID</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>City</AttributeID>
+              <Name>City</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Postal Code</AttributeID>
+              <Name>Postal Code</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Country Region Code</AttributeID>
+              <Name>Country Region Code</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Name Country</AttributeID>
+              <Name>Name Country</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>DIM Geography - Active From</AttributeID>
+              <Name>DIM Geography - Active From</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>DIM Geography - Active To</AttributeID>
+              <Name>DIM Geography - Active To</Name>
+            </AttributeRelationship>
+          </AttributeRelationships>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Address ID</ID>
+          <Name>Address ID</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMGeography</TableID>
+                <ColumnID>AddressID</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>City</ID>
+          <Name>City</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>30</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMGeography</TableID>
+                <ColumnID>City</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Postal Code</ID>
+          <Name>Postal Code</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>15</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMGeography</TableID>
+                <ColumnID>PostalCode</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Country Region Code</ID>
+          <Name>Country Region Code</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>3</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMGeography</TableID>
+                <ColumnID>CountryRegionCode</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Name Country</ID>
+          <Name>Name Country</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>50</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMGeography</TableID>
+                <ColumnID>NameCountry</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>DIM Geography - Active From</ID>
+          <Name>DIM Geography - Active From</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMGeography</TableID>
+                <ColumnID>ActiveFrom</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>DIM Geography - Active To</ID>
+          <Name>DIM Geography - Active To</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMGeography</TableID>
+                <ColumnID>ActiveTo</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+      </Attributes>
+      <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+    </Dimension>
+    <Dimension>
+      <ID>DIM Location</ID>
+      <Name>DIM Location</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <Annotations>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+          <Value>
+            <dds xmlns="">
+              <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1938" scrolltop="-4096" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="6922" y="10859" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+                <font>
+                  <ddsxmlobjectstreamwrapper binary="01a300009001b0300100065461686f6d61" />
+                </font>
+                <mouseicon>
+                  <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+                </mouseicon>
+              </diagram>
+              <layoutmanager>
+                <ddsxmlobj />
+              </layoutmanager>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMLocation" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3006" height="2667" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e0000be0b00006b0a0000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMLocation" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+            </dds>
+          </Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+          <Value>false</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+          <Value>-1938</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+          <Value>-4096</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+          <Value>20</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+          <Value>0</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+          <Value>100</Value>
+        </Annotation>
+      </Annotations>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Source xsi:type="DataSourceViewBinding">
+        <DataSourceViewID>DW Purchasing</DataSourceViewID>
+      </Source>
+      <UnknownMember>Visible</UnknownMember>
+      <ErrorConfiguration>
+        <KeyNotFound>ReportAndStop</KeyNotFound>
+        <KeyDuplicate>ReportAndStop</KeyDuplicate>
+        <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+      </ErrorConfiguration>
+      <CurrentStorageMode>Molap</CurrentStorageMode>
+      <Attributes>
+        <Attribute>
+          <ID>Location Key</ID>
+          <Name>Location Key</Name>
+          <Usage>Key</Usage>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <NullProcessing>UnknownMember</NullProcessing>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMLocation</TableID>
+                <ColumnID>LocationKey</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <AttributeRelationships>
+            <AttributeRelationship>
+              <AttributeID>Location ID</AttributeID>
+              <Name>Location ID</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Name Location</AttributeID>
+              <Name>Name Location</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Active From</AttributeID>
+              <Name>Active From</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Active To</AttributeID>
+              <Name>Active To</Name>
+            </AttributeRelationship>
+          </AttributeRelationships>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Location ID</ID>
+          <Name>Location ID</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>SmallInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMLocation</TableID>
+                <ColumnID>LocationID</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Name Location</ID>
+          <Name>Name Location</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>50</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMLocation</TableID>
+                <ColumnID>NameLocation</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Active From</ID>
+          <Name>Active From</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMLocation</TableID>
+                <ColumnID>ActiveFrom</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Active To</ID>
+          <Name>Active To</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMLocation</TableID>
+                <ColumnID>ActiveTo</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+      </Attributes>
+      <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+    </Dimension>
+    <Dimension>
+      <ID>DIM Time</ID>
+      <Name>DIM Time</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <Annotations>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+          <Value>
+            <dds xmlns="">
+              <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1219" scrolltop="-2929" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="6922" y="10859" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+                <font>
+                  <ddsxmlobjectstreamwrapper binary="01a300009001b0300100065461686f6d61" />
+                </font>
+                <mouseicon>
+                  <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+                </mouseicon>
+              </diagram>
+              <layoutmanager>
+                <ddsxmlobj />
+              </layoutmanager>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMTime" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="4445" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e00005d11000088130000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMTime" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+            </dds>
+          </Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+          <Value>false</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+          <Value>-1219</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+          <Value>-2929</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+          <Value>20</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+          <Value>0</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+          <Value>100</Value>
+        </Annotation>
+      </Annotations>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Source xsi:type="DataSourceViewBinding">
+        <DataSourceViewID>DW Purchasing</DataSourceViewID>
+      </Source>
+      <UnknownMember>Visible</UnknownMember>
+      <ErrorConfiguration>
+        <KeyNotFound>ReportAndStop</KeyNotFound>
+        <KeyDuplicate>ReportAndStop</KeyDuplicate>
+        <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+      </ErrorConfiguration>
+      <CurrentStorageMode>Molap</CurrentStorageMode>
+      <Attributes>
+        <Attribute>
+          <ID>Time Key</ID>
+          <Name>Time Key</Name>
+          <Usage>Key</Usage>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <NullProcessing>UnknownMember</NullProcessing>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>TimeKey</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <AttributeRelationships>
+            <AttributeRelationship>
+              <AttributeID>Full Date Alternate Key</AttributeID>
+              <Name>Full Date Alternate Key</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Day Number Of Week</AttributeID>
+              <Name>Day Number Of Week</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>English Day Name Of Week</AttributeID>
+              <Name>English Day Name Of Week</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Day Number Of Month</AttributeID>
+              <Name>Day Number Of Month</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Day Number Of Year</AttributeID>
+              <Name>Day Number Of Year</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Week Number Of Year</AttributeID>
+              <Name>Week Number Of Year</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>English Month Name</AttributeID>
+              <Name>English Month Name</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Month Number Of Year</AttributeID>
+              <Name>Month Number Of Year</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Calendar Quarter</AttributeID>
+              <Name>Calendar Quarter</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Calendar Year</AttributeID>
+              <Name>Calendar Year</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Calendar Semester</AttributeID>
+              <Name>Calendar Semester</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Fiscal Quarter</AttributeID>
+              <Name>Fiscal Quarter</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Fiscal Year</AttributeID>
+              <Name>Fiscal Year</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Fiscal Semester</AttributeID>
+              <Name>Fiscal Semester</Name>
+            </AttributeRelationship>
+          </AttributeRelationships>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Full Date Alternate Key</ID>
+          <Name>Full Date Alternate Key</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>FullDateAlternateKey</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Day Number Of Week</ID>
+          <Name>Day Number Of Week</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>UnsignedTinyInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>DayNumberOfWeek</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>English Day Name Of Week</ID>
+          <Name>English Day Name Of Week</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>10</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>EnglishDayNameOfWeek</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Day Number Of Month</ID>
+          <Name>Day Number Of Month</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>UnsignedTinyInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>DayNumberOfMonth</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Day Number Of Year</ID>
+          <Name>Day Number Of Year</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>SmallInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>DayNumberOfYear</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Week Number Of Year</ID>
+          <Name>Week Number Of Year</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>UnsignedTinyInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>WeekNumberOfYear</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>English Month Name</ID>
+          <Name>English Month Name</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>10</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>EnglishMonthName</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Month Number Of Year</ID>
+          <Name>Month Number Of Year</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>UnsignedTinyInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>MonthNumberOfYear</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Calendar Quarter</ID>
+          <Name>Calendar Quarter</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>UnsignedTinyInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>CalendarQuarter</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Calendar Year</ID>
+          <Name>Calendar Year</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>SmallInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>CalendarYear</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Calendar Semester</ID>
+          <Name>Calendar Semester</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>UnsignedTinyInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>CalendarSemester</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Fiscal Quarter</ID>
+          <Name>Fiscal Quarter</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>UnsignedTinyInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>FiscalQuarter</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Fiscal Year</ID>
+          <Name>Fiscal Year</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>SmallInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>FiscalYear</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Fiscal Semester</ID>
+          <Name>Fiscal Semester</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>UnsignedTinyInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMTime</TableID>
+                <ColumnID>FiscalSemester</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+      </Attributes>
+      <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+    </Dimension>
+    <Dimension>
+      <ID>DIM Product</ID>
+      <Name>DIM Product</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <Annotations>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+          <Value>
+            <dds xmlns="">
+              <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="6" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="743" scrolltop="-1996" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="6922" y="10859" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+                <font>
+                  <ddsxmlobjectstreamwrapper binary="01a300009001b0300100065461686f6d61" />
+                </font>
+                <mouseicon>
+                  <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+                </mouseicon>
+              </diagram>
+              <layoutmanager>
+                <ddsxmlobj />
+              </layoutmanager>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMProduct" left="231" top="5427" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3662" height="4466" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e00004e0e000072110000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMProduct" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMCategory" left="6505" top="180" logicalid="2" controlid="2" masterid="0" hint1="0" hint2="0" width="3598" height="2667" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e00000e0e00006b0a0000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMCategory" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMSubcategory" left="20" top="0" logicalid="3" controlid="3" masterid="0" hint1="0" hint2="0" width="4085" height="3027" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e0000f50f0000d30b0000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMSubcategory" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="1663" top="2528" logicalid="4" controlid="4" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_DIMProduct_DIMSubcategory]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="3" destid="1" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="2062" y="3027" />
+                  <point x="2062" y="5427" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="3805" top="1114" logicalid="5" controlid="5" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_DIMSubcategory_DIMCategory]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="3" sourceattachpoint="18" destattachpoint="19" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="6505" y="1513" />
+                  <point x="4105" y="1513" />
+                </connector>
+              </ddscontrol>
+            </dds>
+          </Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+          <Value>false</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+          <Value>743</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+          <Value>-1996</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+          <Value>20</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+          <Value>0</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+          <Value>75</Value>
+        </Annotation>
+      </Annotations>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Source xsi:type="DataSourceViewBinding">
+        <DataSourceViewID>DW Purchasing</DataSourceViewID>
+      </Source>
+      <UnknownMember>Visible</UnknownMember>
+      <ErrorConfiguration>
+        <KeyNotFound>ReportAndStop</KeyNotFound>
+        <KeyDuplicate>ReportAndStop</KeyDuplicate>
+        <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+      </ErrorConfiguration>
+      <CurrentStorageMode>Molap</CurrentStorageMode>
+      <Attributes>
+        <Attribute>
+          <ID>Product Key</ID>
+          <Name>Product Key</Name>
+          <Usage>Key</Usage>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <NullProcessing>UnknownMember</NullProcessing>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMProduct</TableID>
+                <ColumnID>ProductKey</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <AttributeRelationships>
+            <AttributeRelationship>
+              <AttributeID>Product ID</AttributeID>
+              <Name>Product ID</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Product Name</AttributeID>
+              <Name>Product Name</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Finished Goods Flag</AttributeID>
+              <Name>Finished Goods Flag</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Reorder Point</AttributeID>
+              <Name>Reorder Point</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Product Number</AttributeID>
+              <Name>Product Number</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Make Flag</AttributeID>
+              <Name>Make Flag</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Active From</AttributeID>
+              <Name>Active From</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Active To</AttributeID>
+              <Name>Active To</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Sub Category Key</AttributeID>
+              <Name>Sub Category Key</Name>
+            </AttributeRelationship>
+          </AttributeRelationships>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Product ID</ID>
+          <Name>Product ID</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMProduct</TableID>
+                <ColumnID>ProductID</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Product Name</ID>
+          <Name>Product Name</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>50</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMProduct</TableID>
+                <ColumnID>ProductName</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Finished Goods Flag</ID>
+          <Name>Finished Goods Flag</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Boolean</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMProduct</TableID>
+                <ColumnID>FinishedGoodsFlag</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Reorder Point</ID>
+          <Name>Reorder Point</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>SmallInt</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMProduct</TableID>
+                <ColumnID>ReorderPoint</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Product Number</ID>
+          <Name>Product Number</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>25</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMProduct</TableID>
+                <ColumnID>ProductNumber</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Make Flag</ID>
+          <Name>Make Flag</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Boolean</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMProduct</TableID>
+                <ColumnID>MakeFlag</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Active From</ID>
+          <Name>Active From</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMProduct</TableID>
+                <ColumnID>ActiveFrom</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Active To</ID>
+          <Name>Active To</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMProduct</TableID>
+                <ColumnID>ActiveTo</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Sub Category Key</ID>
+          <Name>Sub Category Key</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <NullProcessing>UnknownMember</NullProcessing>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMSubcategory</TableID>
+                <ColumnID>SubCategoryKey</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <AttributeRelationships>
+            <AttributeRelationship>
+              <AttributeID>Product Subcategory ID</AttributeID>
+              <Name>Product Subcategory ID</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Name Sub Category</AttributeID>
+              <Name>Name Sub Category</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>DIM Subcategory - Active From</AttributeID>
+              <Name>DIM Subcategory - Active From</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>DIM Subcategory - Active To</AttributeID>
+              <Name>DIM Subcategory - Active To</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Category Key</AttributeID>
+              <Name>Category Key</Name>
+            </AttributeRelationship>
+          </AttributeRelationships>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Product Subcategory ID</ID>
+          <Name>Product Subcategory ID</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMSubcategory</TableID>
+                <ColumnID>ProductSubcategoryID</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Name Sub Category</ID>
+          <Name>Name Sub Category</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>50</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMSubcategory</TableID>
+                <ColumnID>NameSubCategory</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>DIM Subcategory - Active From</ID>
+          <Name>DIM Subcategory - Active From</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMSubcategory</TableID>
+                <ColumnID>ActiveFrom</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>DIM Subcategory - Active To</ID>
+          <Name>DIM Subcategory - Active To</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMSubcategory</TableID>
+                <ColumnID>ActiveTo</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Category Key</ID>
+          <Name>Category Key</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <NullProcessing>UnknownMember</NullProcessing>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMCategory</TableID>
+                <ColumnID>CategoryKey</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <AttributeRelationships>
+            <AttributeRelationship>
+              <AttributeID>Product Category ID</AttributeID>
+              <Name>Product Category ID</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>Name Category</AttributeID>
+              <Name>Name Category</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>DIM Category - Active From</AttributeID>
+              <Name>DIM Category - Active From</Name>
+            </AttributeRelationship>
+            <AttributeRelationship>
+              <AttributeID>DIM Category - Active To</AttributeID>
+              <Name>DIM Category - Active To</Name>
+            </AttributeRelationship>
+          </AttributeRelationships>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Product Category ID</ID>
+          <Name>Product Category ID</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Integer</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMCategory</TableID>
+                <ColumnID>ProductCategoryID</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>Name Category</ID>
+          <Name>Name Category</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>WChar</DataType>
+              <DataSize>50</DataSize>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMCategory</TableID>
+                <ColumnID>NameCategory</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>DIM Category - Active From</ID>
+          <Name>DIM Category - Active From</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMCategory</TableID>
+                <ColumnID>ActiveFrom</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+        <Attribute>
+          <ID>DIM Category - Active To</ID>
+          <Name>DIM Category - Active To</Name>
+          <KeyColumns>
+            <KeyColumn>
+              <DataType>Date</DataType>
+              <Source xsi:type="ColumnBinding">
+                <TableID>dw_DIMCategory</TableID>
+                <ColumnID>ActiveTo</ColumnID>
+              </Source>
+            </KeyColumn>
+          </KeyColumns>
+          <OrderBy>Key</OrderBy>
+          <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+          <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+        </Attribute>
+      </Attributes>
+      <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+    </Dimension>
+  </Dimensions>
+  <Cubes>
+    <Cube>
+      <ID>DW_Purchasing</ID>
+      <Name>DW_Purchasing</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <Annotations>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+          <Value>
+            <dds xmlns="">
+              <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="23" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-550" scrolltop="15793" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="15282" y="10859" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+                <font>
+                  <ddsxmlobjectstreamwrapper binary="01a300009001b0300100065461686f6d61" />
+                </font>
+                <mouseicon>
+                  <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+                </mouseicon>
+              </diagram>
+              <layoutmanager>
+                <ddsxmlobj />
+              </layoutmanager>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMProduct" left="443" top="14914" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3662" height="4466" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e00004e0e000072110000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMProduct" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FACTInventory" left="14747" top="5067" logicalid="2" controlid="2" masterid="0" hint1="0" hint2="0" width="3387" height="3027" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e00003b0d0000d30b0000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_FACTInventory" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FACTRatingVendor" left="6505" top="10494" logicalid="3" controlid="3" masterid="0" hint1="0" hint2="0" width="5313" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e0000c114000088130000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_FACTRatingVendor" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMVendor" left="10499" top="24041" logicalid="4" controlid="4" masterid="0" hint1="0" hint2="0" width="4170" height="4106" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e00004a1000000a100000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMVendor" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMCategory" left="263" top="27207" logicalid="5" controlid="5" masterid="0" hint1="0" hint2="0" width="3598" height="2667" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e00000e0e00006b0a0000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMCategory" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMSubcategory" left="20" top="21780" logicalid="6" controlid="6" masterid="0" hint1="0" hint2="0" width="4085" height="3027" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e0000f50f0000d30b0000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMSubcategory" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMLocation" left="14937" top="0" logicalid="7" controlid="7" masterid="0" hint1="0" hint2="0" width="3006" height="2667" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e0000be0b00006b0a0000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMLocation" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FACTDependentVendor" left="14398" top="17894" logicalid="8" controlid="8" masterid="0" hint1="0" hint2="0" width="4085" height="3747" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e0000f50f0000a30e0000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_FACTDependentVendor" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMTime" left="14218" top="10494" logicalid="9" controlid="9" masterid="0" hint1="0" hint2="0" width="4445" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e00005d11000088130000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMTime" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" left="10700" top="30547" logicalid="10" controlid="10" masterid="0" hint1="0" hint2="0" width="3768" height="3747" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobjectstreaminitwrapper binary="000e0000b80e0000a30e0000" />
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dw_DIMGeography" vartype="8" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <shape groupshapeid="0" groupnode="0" />
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="1663" top="19080" logicalid="11" controlid="11" masterid="0" hint1="0" hint2="0" width="911" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_DIMProduct_DIMSubcategory]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="6" destid="1" sourceattachpoint="6" destattachpoint="7" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="2062" y="21780" />
+                  <point x="2062" y="20580" />
+                  <point x="2274" y="20580" />
+                  <point x="2274" y="19380" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="3805" top="12694" logicalid="12" controlid="12" masterid="0" hint1="0" hint2="0" width="3000" height="4853" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_FACTRatingVendor_DIMProduct]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="1" destid="3" sourceattachpoint="21" destattachpoint="26" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="4105" y="17147" />
+                  <point x="5305" y="17147" />
+                  <point x="5305" y="12994" />
+                  <point x="6505" y="12994" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="3805" top="6280" logicalid="13" controlid="13" masterid="0" hint1="0" hint2="0" width="11242" height="10167" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_FACTInventory_DIMProduct]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="1" destid="2" sourceattachpoint="17" destattachpoint="14" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="4105" y="16047" />
+                  <point x="9426" y="16047" />
+                  <point x="9426" y="6580" />
+                  <point x="14747" y="6580" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="3805" top="18398" logicalid="14" controlid="14" masterid="0" hint1="0" hint2="0" width="10893" height="1669" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_FACTDependentVendor_DIMProduct]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="1" destid="8" sourceattachpoint="27" destattachpoint="20" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="4105" y="18797" />
+                  <point x="9251" y="18797" />
+                  <point x="9251" y="19767" />
+                  <point x="14398" y="19767" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="16041" top="7794" logicalid="15" controlid="15" masterid="0" hint1="0" hint2="0" width="799" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_FACTInventory_DIMTime]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="9" destid="2" sourceattachpoint="6" destattachpoint="5" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="16440" y="10494" />
+                  <point x="16440" y="8094" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="16041" top="2168" logicalid="16" controlid="16" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_FACTInventory_DIMLocation]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="7" destid="2" sourceattachpoint="5" destattachpoint="4" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="16440" y="2667" />
+                  <point x="16440" y="5067" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="8861" top="15194" logicalid="17" controlid="17" masterid="0" hint1="0" hint2="0" width="3023" height="9347" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_FACTRatingVendor_DIMVendor]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="3" sourceattachpoint="2" destattachpoint="9" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="11484" y="24041" />
+                  <point x="11484" y="19768" />
+                  <point x="9161" y="19768" />
+                  <point x="9161" y="15494" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="11518" top="12595" logicalid="18" controlid="18" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_FACTRatingVendor_DIMTime]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="9" destid="3" sourceattachpoint="22" destattachpoint="27" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="14218" y="12994" />
+                  <point x="11818" y="12994" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="12185" top="27847" logicalid="19" controlid="19" masterid="0" hint1="0" hint2="0" width="799" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_DIMVendor_DIMGeography]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="10" destid="4" sourceattachpoint="6" destattachpoint="7" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="12584" y="30547" />
+                  <point x="12584" y="28147" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="12735" top="21341" logicalid="20" controlid="20" masterid="0" hint1="0" hint2="0" width="4005" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_FACTDependentVendor_DIMVendor]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="8" sourceattachpoint="8" destattachpoint="7" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="13134" y="24041" />
+                  <point x="13134" y="22841" />
+                  <point x="16440" y="22841" />
+                  <point x="16440" y="21641" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="1663" top="24507" logicalid="21" controlid="21" masterid="0" hint1="0" hint2="0" width="799" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_DIMSubcategory_DIMCategory]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="5" destid="6" sourceattachpoint="6" destattachpoint="7" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="2062" y="27207" />
+                  <point x="2062" y="24807" />
+                </connector>
+              </ddscontrol>
+              <ddscontrol controlprogid="MSDDS.Polyline" left="16041" top="14995" logicalid="22" controlid="22" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                <control>
+                  <ddsxmlobj>
+                    <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                  </ddsxmlobj>
+                </control>
+                <layoutobject>
+                  <ddsxmlobj>
+                    <property name="LogicalObject" value="dataSet.Relations[FK_FACTDependentVendor_DIMTime]" vartype="8" />
+                    <property name="Virtual" value="0" vartype="11" />
+                    <property name="VisibleAP" value="0" vartype="3" />
+                  </ddsxmlobj>
+                </layoutobject>
+                <connector lineroutestyle="MSDDS.Rectilinear" sourceid="9" destid="8" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                  <point x="16440" y="15494" />
+                  <point x="16440" y="17894" />
+                </connector>
+              </ddscontrol>
+            </dds>
+          </Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+          <Value>false</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+          <Value>-550</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+          <Value>15793</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+          <Value>20</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+          <Value>0</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+          <Value>75</Value>
+        </Annotation>
+      </Annotations>
+      <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Dimensions>
+        <Dimension>
+          <ID>DIM Product</ID>
+          <Name>DIM Product</Name>
+          <DimensionID>DIM Product</DimensionID>
+          <Attributes>
+            <Attribute>
+              <AttributeID>Product Key</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Product ID</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Product Name</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Finished Goods Flag</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Reorder Point</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Product Number</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Make Flag</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Active From</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Active To</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Sub Category Key</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Product Subcategory ID</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Name Sub Category</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>DIM Subcategory - Active From</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>DIM Subcategory - Active To</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Category Key</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Product Category ID</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Name Category</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>DIM Category - Active From</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>DIM Category - Active To</AttributeID>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension>
+          <ID>DIM Time</ID>
+          <Name>DIM Time</Name>
+          <DimensionID>DIM Time</DimensionID>
+          <Attributes>
+            <Attribute>
+              <AttributeID>Time Key</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Full Date Alternate Key</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Day Number Of Week</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>English Day Name Of Week</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Day Number Of Month</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Day Number Of Year</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Week Number Of Year</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>English Month Name</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Month Number Of Year</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Calendar Quarter</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Calendar Year</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Calendar Semester</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Fiscal Quarter</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Fiscal Year</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Fiscal Semester</AttributeID>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension>
+          <ID>DIM Vendor</ID>
+          <Name>DIM Vendor</Name>
+          <DimensionID>DIM Vendor</DimensionID>
+          <Attributes>
+            <Attribute>
+              <AttributeID>Vendor Key</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Vendor ID</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Vendor Name</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Credit Rating</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Active Flag</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Preferred Vendor Status</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Active From</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Active To</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Geography Key</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Address ID</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>City</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Postal Code</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Country Region Code</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Name Country</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>DIM Geography - Active From</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>DIM Geography - Active To</AttributeID>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension>
+          <ID>DIM Location</ID>
+          <Name>DIM Location</Name>
+          <DimensionID>DIM Location</DimensionID>
+          <Attributes>
+            <Attribute>
+              <AttributeID>Location Key</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Location ID</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Name Location</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Active From</AttributeID>
+            </Attribute>
+            <Attribute>
+              <AttributeID>Active To</AttributeID>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <MeasureGroups>
+        <MeasureGroup>
+          <ID>FACT Dependent Vendor</ID>
+          <Name>FACT Dependent Vendor</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Measures>
+            <Measure>
+              <ID>Total Vendor Of Product</ID>
+              <Name>Total Vendor Of Product</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTDependentVendor</TableID>
+                  <ColumnID>TotalVendorOfProduct</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Unit Price</ID>
+              <Name>Unit Price</Name>
+              <Source>
+                <DataType>Double</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTDependentVendor</TableID>
+                  <ColumnID>UnitPrice</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Avg Price</ID>
+              <Name>Avg Price</Name>
+              <Source>
+                <DataType>Double</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTDependentVendor</TableID>
+                  <ColumnID>AvgPrice</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Rating</ID>
+              <Name>Rating</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTDependentVendor</TableID>
+                  <ColumnID>Rating</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>FACT Dependent Vendor Count</ID>
+              <Name>FACT Dependent Vendor Count</Name>
+              <AggregateFunction>Count</AggregateFunction>
+              <Source>
+                <DataType>Integer</DataType>
+                <DataSize>4</DataSize>
+                <Source xsi:type="RowBinding">
+                  <TableID>dw_FACTDependentVendor</TableID>
+                </Source>
+              </Source>
+            </Measure>
+          </Measures>
+          <StorageMode>Molap</StorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <Dimensions>
+            <Dimension xsi:type="RegularMeasureGroupDimension">
+              <CubeDimensionID>DIM Product</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Product Key</AttributeID>
+                  <KeyColumns>
+                    <KeyColumn>
+                      <DataType>Integer</DataType>
+                      <NullProcessing>UnknownMember</NullProcessing>
+                      <Source xsi:type="ColumnBinding">
+                        <TableID>dw_FACTDependentVendor</TableID>
+                        <ColumnID>ProductKey</ColumnID>
+                      </Source>
+                    </KeyColumn>
+                  </KeyColumns>
+                  <Type>Granularity</Type>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension xsi:type="RegularMeasureGroupDimension">
+              <CubeDimensionID>DIM Time</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Time Key</AttributeID>
+                  <KeyColumns>
+                    <KeyColumn>
+                      <DataType>Integer</DataType>
+                      <NullProcessing>UnknownMember</NullProcessing>
+                      <Source xsi:type="ColumnBinding">
+                        <TableID>dw_FACTDependentVendor</TableID>
+                        <ColumnID>TimeKey</ColumnID>
+                      </Source>
+                    </KeyColumn>
+                  </KeyColumns>
+                  <Type>Granularity</Type>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension xsi:type="RegularMeasureGroupDimension">
+              <CubeDimensionID>DIM Vendor</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Vendor Key</AttributeID>
+                  <KeyColumns>
+                    <KeyColumn>
+                      <DataType>Integer</DataType>
+                      <NullProcessing>UnknownMember</NullProcessing>
+                      <Source xsi:type="ColumnBinding">
+                        <TableID>dw_FACTDependentVendor</TableID>
+                        <ColumnID>VendorKey</ColumnID>
+                      </Source>
+                    </KeyColumn>
+                  </KeyColumns>
+                  <Type>Granularity</Type>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+          </Dimensions>
+          <Partitions>
+            <Partition>
+              <ID>FACT Dependent Vendor</ID>
+              <Name>FACT Dependent Vendor</Name>
+              <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+              <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+              <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+              <State>Unprocessed</State>
+              <Source xsi:type="DsvTableBinding">
+                <DataSourceViewID>DW Purchasing</DataSourceViewID>
+                <TableID>dw_FACTDependentVendor</TableID>
+              </Source>
+              <StorageMode>Molap</StorageMode>
+              <CurrentStorageMode>Molap</CurrentStorageMode>
+              <ProcessingMode>Regular</ProcessingMode>
+            </Partition>
+          </Partitions>
+        </MeasureGroup>
+        <MeasureGroup>
+          <ID>FACT Inventory</ID>
+          <Name>FACT Inventory</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Measures>
+            <Measure>
+              <ID>Safety Stock Level</ID>
+              <Name>Safety Stock Level</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTInventory</TableID>
+                  <ColumnID>SafetyStockLevel</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Quantity On Hand</ID>
+              <Name>Quantity On Hand</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTInventory</TableID>
+                  <ColumnID>QuantityOnHand</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>FACT Inventory Count</ID>
+              <Name>FACT Inventory Count</Name>
+              <AggregateFunction>Count</AggregateFunction>
+              <Source>
+                <DataType>Integer</DataType>
+                <DataSize>4</DataSize>
+                <Source xsi:type="RowBinding">
+                  <TableID>dw_FACTInventory</TableID>
+                </Source>
+              </Source>
+            </Measure>
+          </Measures>
+          <StorageMode>Molap</StorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <Dimensions>
+            <Dimension xsi:type="RegularMeasureGroupDimension">
+              <CubeDimensionID>DIM Time</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Time Key</AttributeID>
+                  <KeyColumns>
+                    <KeyColumn>
+                      <DataType>Integer</DataType>
+                      <NullProcessing>UnknownMember</NullProcessing>
+                      <Source xsi:type="ColumnBinding">
+                        <TableID>dw_FACTInventory</TableID>
+                        <ColumnID>TimeKey</ColumnID>
+                      </Source>
+                    </KeyColumn>
+                  </KeyColumns>
+                  <Type>Granularity</Type>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension xsi:type="RegularMeasureGroupDimension">
+              <CubeDimensionID>DIM Product</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Product Key</AttributeID>
+                  <KeyColumns>
+                    <KeyColumn>
+                      <DataType>Integer</DataType>
+                      <NullProcessing>UnknownMember</NullProcessing>
+                      <Source xsi:type="ColumnBinding">
+                        <TableID>dw_FACTInventory</TableID>
+                        <ColumnID>ProductKey</ColumnID>
+                      </Source>
+                    </KeyColumn>
+                  </KeyColumns>
+                  <Type>Granularity</Type>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension xsi:type="RegularMeasureGroupDimension">
+              <CubeDimensionID>DIM Location</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Location Key</AttributeID>
+                  <KeyColumns>
+                    <KeyColumn>
+                      <DataType>Integer</DataType>
+                      <NullProcessing>UnknownMember</NullProcessing>
+                      <Source xsi:type="ColumnBinding">
+                        <TableID>dw_FACTInventory</TableID>
+                        <ColumnID>LocationKey</ColumnID>
+                      </Source>
+                    </KeyColumn>
+                  </KeyColumns>
+                  <Type>Granularity</Type>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+          </Dimensions>
+          <Partitions>
+            <Partition>
+              <ID>FACT Inventory</ID>
+              <Name>FACT Inventory</Name>
+              <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+              <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+              <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+              <State>Unprocessed</State>
+              <Source xsi:type="DsvTableBinding">
+                <DataSourceViewID>DW Purchasing</DataSourceViewID>
+                <TableID>dw_FACTInventory</TableID>
+              </Source>
+              <StorageMode>Molap</StorageMode>
+              <CurrentStorageMode>Molap</CurrentStorageMode>
+              <ProcessingMode>Regular</ProcessingMode>
+            </Partition>
+          </Partitions>
+        </MeasureGroup>
+        <MeasureGroup>
+          <ID>FACT Rating Vendor</ID>
+          <Name>FACT Rating Vendor</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Measures>
+            <Measure>
+              <ID>Purchase Order Accuracy</ID>
+              <Name>Purchase Order Accuracy</Name>
+              <Source>
+                <DataType>Double</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>PurchaseOrderAccuracy</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Score Purchase Ordera Accuracy</ID>
+              <Name>Score Purchase Ordera Accuracy</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>ScorePurchaseOrderaAccuracy</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Return Frequency</ID>
+              <Name>Return Frequency</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>ReturnFrequency</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Score Return Frequency</ID>
+              <Name>Score Return Frequency</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>ScoreReturnFrequency</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Return Rate</ID>
+              <Name>Return Rate</Name>
+              <Source>
+                <DataType>Double</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>ReturnRate</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Score Return Rate</ID>
+              <Name>Score Return Rate</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>ScoreReturnRate</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>VDP</ID>
+              <Name>VDP</Name>
+              <Source>
+                <DataType>Double</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>VDP</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Score VDP</ID>
+              <Name>Score VDP</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>ScoreVDP</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Lead Time</ID>
+              <Name>Lead Time</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>LeadTime</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Score Lead Time</ID>
+              <Name>Score Lead Time</Name>
+              <Source>
+                <DataType>Integer</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>ScoreLeadTime</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Score Quantity</ID>
+              <Name>Score Quantity</Name>
+              <Source>
+                <DataType>Double</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>ScoreQuantity</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Score Time Delivery</ID>
+              <Name>Score Time Delivery</Name>
+              <Source>
+                <DataType>Double</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>ScoreTimeDelivery</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>Score Rating</ID>
+              <Name>Score Rating</Name>
+              <Source>
+                <DataType>Double</DataType>
+                <Source xsi:type="ColumnBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                  <ColumnID>ScoreRating</ColumnID>
+                </Source>
+              </Source>
+            </Measure>
+            <Measure>
+              <ID>FACT Rating Vendor Count</ID>
+              <Name>FACT Rating Vendor Count</Name>
+              <AggregateFunction>Count</AggregateFunction>
+              <Source>
+                <DataType>Integer</DataType>
+                <DataSize>4</DataSize>
+                <Source xsi:type="RowBinding">
+                  <TableID>dw_FACTRatingVendor</TableID>
+                </Source>
+              </Source>
+            </Measure>
+          </Measures>
+          <StorageMode>Molap</StorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <Dimensions>
+            <Dimension xsi:type="RegularMeasureGroupDimension">
+              <CubeDimensionID>DIM Product</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Product Key</AttributeID>
+                  <KeyColumns>
+                    <KeyColumn>
+                      <DataType>Integer</DataType>
+                      <NullProcessing>UnknownMember</NullProcessing>
+                      <Source xsi:type="ColumnBinding">
+                        <TableID>dw_FACTRatingVendor</TableID>
+                        <ColumnID>ProductKey</ColumnID>
+                      </Source>
+                    </KeyColumn>
+                  </KeyColumns>
+                  <Type>Granularity</Type>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension xsi:type="RegularMeasureGroupDimension">
+              <CubeDimensionID>DIM Vendor</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Vendor Key</AttributeID>
+                  <KeyColumns>
+                    <KeyColumn>
+                      <DataType>Integer</DataType>
+                      <NullProcessing>UnknownMember</NullProcessing>
+                      <Source xsi:type="ColumnBinding">
+                        <TableID>dw_FACTRatingVendor</TableID>
+                        <ColumnID>VendorKey</ColumnID>
+                      </Source>
+                    </KeyColumn>
+                  </KeyColumns>
+                  <Type>Granularity</Type>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension xsi:type="RegularMeasureGroupDimension">
+              <CubeDimensionID>DIM Time</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Time Key</AttributeID>
+                  <KeyColumns>
+                    <KeyColumn>
+                      <DataType>Integer</DataType>
+                      <NullProcessing>UnknownMember</NullProcessing>
+                      <Source xsi:type="ColumnBinding">
+                        <TableID>dw_FACTRatingVendor</TableID>
+                        <ColumnID>TimeKey</ColumnID>
+                      </Source>
+                    </KeyColumn>
+                  </KeyColumns>
+                  <Type>Granularity</Type>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+          </Dimensions>
+          <Partitions>
+            <Partition>
+              <ID>FACT Rating Vendor</ID>
+              <Name>FACT Rating Vendor</Name>
+              <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+              <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+              <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+              <State>Unprocessed</State>
+              <Source xsi:type="DsvTableBinding">
+                <DataSourceViewID>DW Purchasing</DataSourceViewID>
+                <TableID>dw_FACTRatingVendor</TableID>
+              </Source>
+              <StorageMode>Molap</StorageMode>
+              <CurrentStorageMode>Molap</CurrentStorageMode>
+              <ProcessingMode>Regular</ProcessingMode>
+            </Partition>
+          </Partitions>
+        </MeasureGroup>
+      </MeasureGroups>
+      <Source>
+        <DataSourceViewID>DW Purchasing</DataSourceViewID>
+      </Source>
+    </Cube>
+  </Cubes>
+  <DataSources>
+    <DataSource xsi:type="RelationalDataSource">
+      <ID>DW Purchasing</ID>
+      <Name>DW_Purchasing</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <ConnectionString>Provider=SQLNCLI11.1;Data Source=DUONGDO\DODUONG;Integrated Security=SSPI;Initial Catalog=DW_Purchasing</ConnectionString>
+      <ConnectionStringSecurity>Unchanged</ConnectionStringSecurity>
+      <ImpersonationInfo>
+        <ImpersonationMode>ImpersonateAccount</ImpersonationMode>
+        <Account>duongdv0110@gmail.com</Account>
+        <ImpersonationInfoSecurity>PasswordRemoved</ImpersonationInfoSecurity>
+      </ImpersonationInfo>
+      <Timeout>PT0S</Timeout>
+    </DataSource>
+  </DataSources>
+  <DataSourceViews>
+    <DataSourceView>
+      <ID>DW Purchasing</ID>
+      <Name>DW_Purchasing</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <Annotations>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+          <Value>_ALL_TABLES_</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+          <Value>true</Value>
+        </Annotation>
+        <Annotation>
+          <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+          <Value>
+            <Layouts xmlns="">
+              <Diagram>
+                <Name>_ALL_TABLES_</Name>
+                <DiagramLayout>
+                  <dds>
+                    <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="23" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="142" scrolltop="13040" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="17949" y="12150" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+                      <font>
+                        <ddsxmlobjectstreamwrapper binary="01a300009001b0300100065461686f6d61" />
+                      </font>
+                      <mouseicon>
+                        <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+                      </mouseicon>
+                    </diagram>
+                    <layoutmanager>
+                      <ddsxmlobj />
+                    </layoutmanager>
+                    <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FACTDependentVendor" left="9292" top="179" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="4085" height="3747" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobjectstreaminitwrapper binary="000e0000f50f0000a30e0000" />
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dw_FACTDependentVendor" vartype="8" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <shape groupshapeid="0" groupnode="0" />
+                    </ddscontrol>
+                    <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FACTInventory" left="14753" top="21306" logicalid="2" controlid="2" masterid="0" hint1="0" hint2="0" width="3387" height="3027" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobjectstreaminitwrapper binary="000e00003b0d0000d30b0000" />
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dw_FACTInventory" vartype="8" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <shape groupshapeid="0" groupnode="0" />
+                    </ddscontrol>
+                    <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="FACTRatingVendor" left="12122" top="6506" logicalid="3" controlid="3" masterid="0" hint1="0" hint2="0" width="5313" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobjectstreaminitwrapper binary="000e0000c114000088130000" />
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dw_FACTRatingVendor" vartype="8" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <shape groupshapeid="0" groupnode="0" />
+                    </ddscontrol>
+                    <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMTime" left="14224" top="13906" logicalid="4" controlid="4" masterid="0" hint1="0" hint2="0" width="4445" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobjectstreaminitwrapper binary="000e00005d11000088130000" />
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dw_DIMTime" vartype="8" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <shape groupshapeid="0" groupnode="0" />
+                    </ddscontrol>
+                    <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMVendor" left="15777" top="0" logicalid="5" controlid="5" masterid="0" hint1="0" hint2="0" width="4170" height="4106" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobjectstreaminitwrapper binary="000e00004a1000000a100000" />
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dw_DIMVendor" vartype="8" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <shape groupshapeid="0" groupnode="0" />
+                    </ddscontrol>
+                    <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMProduct" left="3230" top="12467" logicalid="6" controlid="6" masterid="0" hint1="0" hint2="0" width="3662" height="4466" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobjectstreaminitwrapper binary="000e00004e0e000072110000" />
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dw_DIMProduct" vartype="8" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <shape groupshapeid="0" groupnode="0" />
+                    </ddscontrol>
+                    <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMLocation" left="14943" top="26733" logicalid="7" controlid="7" masterid="0" hint1="0" hint2="0" width="3006" height="2667" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobjectstreaminitwrapper binary="000e0000be0b00006b0a0000" />
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dw_DIMLocation" vartype="8" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <shape groupshapeid="0" groupnode="0" />
+                    </ddscontrol>
+                    <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMGeography" left="19835" top="6506" logicalid="8" controlid="8" masterid="0" hint1="0" hint2="0" width="3768" height="3747" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobjectstreaminitwrapper binary="000e0000b80e0000a30e0000" />
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dw_DIMGeography" vartype="8" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <shape groupshapeid="0" groupnode="0" />
+                    </ddscontrol>
+                    <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMSubcategory" left="6018" top="31800" logicalid="9" controlid="9" masterid="0" hint1="0" hint2="0" width="4085" height="3027" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobjectstreaminitwrapper binary="000e0000f50f0000d30b0000" />
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dw_DIMSubcategory" vartype="8" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <shape groupshapeid="0" groupnode="0" />
+                    </ddscontrol>
+                    <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="DIMCategory" left="20" top="31980" logicalid="10" controlid="10" masterid="0" hint1="0" hint2="0" width="3598" height="2667" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobjectstreaminitwrapper binary="000e00000e0e00006b0a0000" />
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dw_DIMCategory" vartype="8" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <shape groupshapeid="0" groupnode="0" />
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="3318" top="32914" logicalid="11" controlid="11" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_DIMSubcategory_DIMCategory]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="10" destid="9" sourceattachpoint="19" destattachpoint="18" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="3618" y="33313" />
+                        <point x="6018" y="33313" />
+                      </connector>
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="4761" top="16633" logicalid="12" controlid="12" masterid="0" hint1="0" hint2="0" width="3699" height="15667" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_DIMProduct_DIMSubcategory]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="9" destid="6" sourceattachpoint="6" destattachpoint="7" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="8060" y="31800" />
+                        <point x="8060" y="24367" />
+                        <point x="5061" y="24367" />
+                        <point x="5061" y="16933" />
+                      </connector>
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="18112" top="3806" logicalid="13" controlid="13" masterid="0" hint1="0" hint2="0" width="4007" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_DIMVendor_DIMGeography]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="8" destid="5" sourceattachpoint="6" destattachpoint="9" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="21719" y="6506" />
+                        <point x="21719" y="5306" />
+                        <point x="18412" y="5306" />
+                        <point x="18412" y="4106" />
+                      </connector>
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="6592" top="8706" logicalid="14" controlid="14" masterid="0" hint1="0" hint2="0" width="5830" height="6394" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_FACTRatingVendor_DIMProduct]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="6" destid="3" sourceattachpoint="21" destattachpoint="26" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="6892" y="14700" />
+                        <point x="9507" y="14700" />
+                        <point x="9507" y="9006" />
+                        <point x="12122" y="9006" />
+                      </connector>
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="14478" top="3607" logicalid="15" controlid="15" masterid="0" hint1="0" hint2="0" width="2684" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_FACTRatingVendor_DIMVendor]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="5" destid="3" sourceattachpoint="3" destattachpoint="8" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="16762" y="4106" />
+                        <point x="16762" y="5306" />
+                        <point x="14778" y="5306" />
+                        <point x="14778" y="6506" />
+                      </connector>
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="14478" top="11206" logicalid="16" controlid="16" masterid="0" hint1="0" hint2="0" width="2918" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_FACTRatingVendor_DIMTime]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="3" sourceattachpoint="8" destattachpoint="9" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="16996" y="13906" />
+                        <point x="16996" y="12706" />
+                        <point x="14778" y="12706" />
+                        <point x="14778" y="11506" />
+                      </connector>
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="16047" top="18407" logicalid="17" controlid="17" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_FACTInventory_DIMTime]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="2" sourceattachpoint="7" destattachpoint="4" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="16446" y="18906" />
+                        <point x="16446" y="21306" />
+                      </connector>
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="6592" top="15951" logicalid="18" controlid="18" masterid="0" hint1="0" hint2="0" width="8461" height="7168" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_FACTInventory_DIMProduct]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="6" destid="2" sourceattachpoint="27" destattachpoint="14" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="6892" y="16350" />
+                        <point x="10822" y="16350" />
+                        <point x="10822" y="22819" />
+                        <point x="14753" y="22819" />
+                      </connector>
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="16047" top="24033" logicalid="19" controlid="19" masterid="0" hint1="0" hint2="0" width="799" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_FACTInventory_DIMLocation]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="7" destid="2" sourceattachpoint="4" destattachpoint="5" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="16446" y="26733" />
+                        <point x="16446" y="24333" />
+                      </connector>
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="6592" top="1752" logicalid="20" controlid="20" masterid="0" hint1="0" hint2="0" width="3000" height="11698" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_FACTDependentVendor_DIMProduct]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="6" destid="1" sourceattachpoint="15" destattachpoint="20" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="6892" y="13050" />
+                        <point x="8092" y="13050" />
+                        <point x="8092" y="2052" />
+                        <point x="9292" y="2052" />
+                      </connector>
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="11034" top="3626" logicalid="21" controlid="21" masterid="0" hint1="0" hint2="0" width="4712" height="10780" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_FACTDependentVendor_DIMTime]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="1" sourceattachpoint="2" destattachpoint="7" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="15346" y="13906" />
+                        <point x="15346" y="8916" />
+                        <point x="11334" y="8916" />
+                        <point x="11334" y="3926" />
+                      </connector>
+                    </ddscontrol>
+                    <ddscontrol controlprogid="MSDDS.Polyline" left="13077" top="1654" logicalid="22" controlid="22" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+                      <control>
+                        <ddsxmlobj>
+                          <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+                        </ddsxmlobj>
+                      </control>
+                      <layoutobject>
+                        <ddsxmlobj>
+                          <property name="LogicalObject" value="dataSet.Relations[FK_FACTDependentVendor_DIMVendor]" vartype="8" />
+                          <property name="Virtual" value="0" vartype="11" />
+                          <property name="VisibleAP" value="0" vartype="3" />
+                        </ddsxmlobj>
+                      </layoutobject>
+                      <connector lineroutestyle="MSDDS.Rectilinear" sourceid="5" destid="1" sourceattachpoint="20" destattachpoint="21" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+                        <point x="15777" y="2053" />
+                        <point x="14577" y="2053" />
+                        <point x="14577" y="2052" />
+                        <point x="13377" y="2052" />
+                      </connector>
+                    </ddscontrol>
+                  </dds>
+</DiagramLayout>
+                <ShowRelationshipNames>False</ShowRelationshipNames>
+                <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+                <DiagramViewPortLeft>142</DiagramViewPortLeft>
+                <DiagramViewPortTop>13040</DiagramViewPortTop>
+                <DiagramBoundingLeft>0</DiagramBoundingLeft>
+                <DiagramBoundingTop>0</DiagramBoundingTop>
+                <DiagramZoom>75</DiagramZoom>
+              </Diagram>
+            </Layouts>
+          </Value>
+        </Annotation>
+      </Annotations>
+      <DataSourceID>DW Purchasing</DataSourceID>
+      <Schema>
+        <xs:schema id="DW_x0020_Purchasing" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+          <xs:element name="DW_x0020_Purchasing" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="1b407842-76d0-4c39-9c34-ad188c084d80">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="dw_FACTDependentVendor" msprop:design-time-name="bd4399f4-c8c7-470a-b49d-2479ac1a99f3" msprop:FriendlyName="FACTDependentVendor" msprop:DbSchemaName="dw" msprop:DbTableName="FACTDependentVendor" msprop:TableType="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="ProductKey" msprop:design-time-name="ca3af395-206d-4c81-aa2c-1fcf32c75442" msprop:DbColumnName="ProductKey" msprop:FriendlyName="ProductKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="VendorKey" msprop:design-time-name="67508f27-ab95-4fc1-bed8-82d5bd9b3816" msprop:DbColumnName="VendorKey" msprop:FriendlyName="VendorKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="TimeKey" msprop:design-time-name="95e42ed8-ce8d-475f-9e1e-4ae3dccae4f9" msprop:DbColumnName="TimeKey" msprop:FriendlyName="TimeKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="TotalVendorOfProduct" msprop:design-time-name="d746e1be-d269-4439-9779-3308730a5434" msprop:DbColumnName="TotalVendorOfProduct" msprop:FriendlyName="TotalVendorOfProduct" type="xs:int" minOccurs="0" />
+                      <xs:element name="UnitPrice" msprop:design-time-name="c8c16436-1309-4441-9cc9-d7d2e64969fb" msprop:DbColumnName="UnitPrice" msprop:FriendlyName="UnitPrice" type="xs:decimal" minOccurs="0" />
+                      <xs:element name="AvgPrice" msprop:design-time-name="f471e579-21e1-40c4-b402-400cc4b7bd4b" msprop:DbColumnName="AvgPrice" msprop:FriendlyName="AvgPrice" type="xs:decimal" minOccurs="0" />
+                      <xs:element name="LastTransactionDate" msprop:design-time-name="e7ff97e1-f838-41a6-abe0-614b56ee6674" msprop:DbColumnName="LastTransactionDate" msprop:FriendlyName="LastTransactionDate" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="Rating" msprop:design-time-name="a4463c94-0d7d-42ad-bdd5-eca296295ba5" msprop:DbColumnName="Rating" msprop:FriendlyName="Rating" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="dw_FACTInventory" msprop:design-time-name="a2d2ad46-53c4-4637-90cf-0eda165aeef3" msprop:FriendlyName="FACTInventory" msprop:DbSchemaName="dw" msprop:DbTableName="FACTInventory" msprop:TableType="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="ProductKey" msprop:design-time-name="c49c1d64-c996-4ae0-a08c-a237d7bf45bf" msprop:DbColumnName="ProductKey" msprop:FriendlyName="ProductKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="LocationKey" msprop:design-time-name="38b53a39-638f-4a27-b596-ea622e8c6107" msprop:DbColumnName="LocationKey" msprop:FriendlyName="LocationKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="TimeKey" msprop:design-time-name="12a06a88-ef31-417e-9010-49e1894dc911" msprop:DbColumnName="TimeKey" msprop:FriendlyName="TimeKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="ModifiedDate" msprop:design-time-name="bdac1ee7-c5d6-4074-bb0f-f10fb37293f6" msprop:DbColumnName="ModifiedDate" msprop:FriendlyName="ModifiedDate" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="SafetyStockLevel" msprop:design-time-name="824200ce-c3ba-4e3d-84f9-3311bc45f0a7" msprop:DbColumnName="SafetyStockLevel" msprop:FriendlyName="SafetyStockLevel" type="xs:int" minOccurs="0" />
+                      <xs:element name="QuantityOnHand" msprop:design-time-name="b8089eb6-caf5-49f2-8647-d9ed0604b988" msprop:DbColumnName="QuantityOnHand" msprop:FriendlyName="QuantityOnHand" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="dw_FACTRatingVendor" msprop:design-time-name="efb049a7-9e55-4fee-a9b1-d6a0ca538a29" msprop:FriendlyName="FACTRatingVendor" msprop:DbSchemaName="dw" msprop:DbTableName="FACTRatingVendor" msprop:TableType="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="ProductKey" msprop:design-time-name="d3bcfa8b-f1fc-4d61-9e86-e28c2ae3e573" msprop:DbColumnName="ProductKey" msprop:FriendlyName="ProductKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="VendorKey" msprop:design-time-name="44346d23-170f-4095-9508-2487b8ff3f17" msprop:DbColumnName="VendorKey" msprop:FriendlyName="VendorKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="TimeKey" msprop:design-time-name="bc83d21a-d9c8-42e4-9fef-0962d533ebd9" msprop:DbColumnName="TimeKey" msprop:FriendlyName="TimeKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="PurchaseOrderAccuracy" msprop:design-time-name="31d03f81-c2da-4fb9-b840-e434c4e53b64" msprop:DbColumnName="PurchaseOrderAccuracy" msprop:FriendlyName="PurchaseOrderAccuracy" type="xs:double" minOccurs="0" />
+                      <xs:element name="ScorePurchaseOrderaAccuracy" msprop:design-time-name="2ac2b2fb-3377-4f08-8cf2-e568ae72cd42" msprop:DbColumnName="ScorePurchaseOrderaAccuracy" msprop:FriendlyName="ScorePurchaseOrderaAccuracy" type="xs:int" minOccurs="0" />
+                      <xs:element name="ReturnFrequency" msprop:design-time-name="fbf7a7da-c2d1-40ae-a594-a5453ecfd003" msprop:DbColumnName="ReturnFrequency" msprop:FriendlyName="ReturnFrequency" type="xs:int" minOccurs="0" />
+                      <xs:element name="ScoreReturnFrequency" msprop:design-time-name="23833f93-aa3c-44c3-8cf2-5808b90a0e2e" msprop:DbColumnName="ScoreReturnFrequency" msprop:FriendlyName="ScoreReturnFrequency" type="xs:int" minOccurs="0" />
+                      <xs:element name="ReturnRate" msprop:design-time-name="c6c171aa-6ee1-473c-b747-c080130c74c2" msprop:DbColumnName="ReturnRate" msprop:FriendlyName="ReturnRate" type="xs:double" minOccurs="0" />
+                      <xs:element name="ScoreReturnRate" msprop:design-time-name="da5910ad-8d96-46d0-b863-0765518be927" msprop:DbColumnName="ScoreReturnRate" msprop:FriendlyName="ScoreReturnRate" type="xs:int" minOccurs="0" />
+                      <xs:element name="VDP" msprop:design-time-name="1af2101a-80de-47b0-94ea-32a9c4b20c90" msprop:DbColumnName="VDP" msprop:FriendlyName="VDP" type="xs:double" minOccurs="0" />
+                      <xs:element name="ScoreVDP" msprop:design-time-name="87eaf38f-d898-4f24-b3b0-56f1ad324e11" msprop:DbColumnName="ScoreVDP" msprop:FriendlyName="ScoreVDP" type="xs:int" minOccurs="0" />
+                      <xs:element name="LeadTime" msprop:design-time-name="71efd4ec-0473-4ab7-8d1e-78cfe3127551" msprop:DbColumnName="LeadTime" msprop:FriendlyName="LeadTime" type="xs:int" minOccurs="0" />
+                      <xs:element name="ScoreLeadTime" msprop:design-time-name="42ba461a-0007-48da-bd08-abcd91c52402" msprop:DbColumnName="ScoreLeadTime" msprop:FriendlyName="ScoreLeadTime" type="xs:int" minOccurs="0" />
+                      <xs:element name="LastOrderDate" msprop:design-time-name="a552c611-e09d-49fe-8744-332b48ff6862" msprop:DbColumnName="LastOrderDate" msprop:FriendlyName="LastOrderDate" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="ScoreQuantity" msprop:design-time-name="871903ad-783c-4175-970c-48249f2d0a27" msprop:DbColumnName="ScoreQuantity" msprop:FriendlyName="ScoreQuantity" type="xs:decimal" minOccurs="0" />
+                      <xs:element name="ScoreTimeDelivery" msprop:design-time-name="35664cca-59fa-408c-99b6-e904ca1ba556" msprop:DbColumnName="ScoreTimeDelivery" msprop:FriendlyName="ScoreTimeDelivery" type="xs:decimal" minOccurs="0" />
+                      <xs:element name="ScoreRating" msprop:design-time-name="7791cac8-8c9f-4dc9-9f2e-42725ed39f57" msprop:DbColumnName="ScoreRating" msprop:FriendlyName="ScoreRating" type="xs:decimal" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="dw_DIMTime" msprop:design-time-name="f195ecf7-35cb-4e76-a854-6b26606a8861" msprop:FriendlyName="DIMTime" msprop:DbSchemaName="dw" msprop:DbTableName="DIMTime" msprop:TableType="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="TimeKey" msprop:design-time-name="ff1704a8-ef74-4202-b8be-dfc7723f3831" msprop:DbColumnName="TimeKey" msprop:FriendlyName="TimeKey" type="xs:int" />
+                      <xs:element name="FullDateAlternateKey" msprop:design-time-name="f8c9720c-1175-4d74-a64b-9b03d0690a8f" msprop:DbColumnName="FullDateAlternateKey" msprop:FriendlyName="FullDateAlternateKey" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="DayNumberOfWeek" msprop:design-time-name="04d346f2-2944-47eb-8068-57c40fc20f38" msprop:DbColumnName="DayNumberOfWeek" msprop:FriendlyName="DayNumberOfWeek" type="xs:unsignedByte" minOccurs="0" />
+                      <xs:element name="EnglishDayNameOfWeek" msprop:design-time-name="8f9dcd38-cce5-43a5-905a-ccf141311c70" msprop:DbColumnName="EnglishDayNameOfWeek" msprop:FriendlyName="EnglishDayNameOfWeek" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="10" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="DayNumberOfMonth" msprop:design-time-name="9d3fe91f-b508-40ff-9d21-b84815e3a815" msprop:DbColumnName="DayNumberOfMonth" msprop:FriendlyName="DayNumberOfMonth" type="xs:unsignedByte" minOccurs="0" />
+                      <xs:element name="DayNumberOfYear" msprop:design-time-name="33824328-5405-40a5-974c-a8529d0ae34e" msprop:DbColumnName="DayNumberOfYear" msprop:FriendlyName="DayNumberOfYear" type="xs:short" minOccurs="0" />
+                      <xs:element name="WeekNumberOfYear" msprop:design-time-name="cf61634b-b451-4760-8e21-d53d817e685a" msprop:DbColumnName="WeekNumberOfYear" msprop:FriendlyName="WeekNumberOfYear" type="xs:unsignedByte" minOccurs="0" />
+                      <xs:element name="EnglishMonthName" msprop:design-time-name="404c9a0a-38a1-49c6-96d8-e19034380156" msprop:DbColumnName="EnglishMonthName" msprop:FriendlyName="EnglishMonthName" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="10" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="MonthNumberOfYear" msprop:design-time-name="6d7d6b6a-e853-4ca1-a29a-6dd1adc79077" msprop:DbColumnName="MonthNumberOfYear" msprop:FriendlyName="MonthNumberOfYear" type="xs:unsignedByte" minOccurs="0" />
+                      <xs:element name="CalendarQuarter" msprop:design-time-name="e5c66321-1071-4bfe-90cb-2869e8dc597d" msprop:DbColumnName="CalendarQuarter" msprop:FriendlyName="CalendarQuarter" type="xs:unsignedByte" minOccurs="0" />
+                      <xs:element name="CalendarYear" msprop:design-time-name="d8f57c15-a7fa-4996-9b06-5a08b111146a" msprop:DbColumnName="CalendarYear" msprop:FriendlyName="CalendarYear" type="xs:short" minOccurs="0" />
+                      <xs:element name="CalendarSemester" msprop:design-time-name="a3651c29-a140-4333-a9bc-d5d5d0c4915d" msprop:DbColumnName="CalendarSemester" msprop:FriendlyName="CalendarSemester" type="xs:unsignedByte" minOccurs="0" />
+                      <xs:element name="FiscalQuarter" msprop:design-time-name="c126844a-9006-4028-afab-3ac7acbb8276" msprop:DbColumnName="FiscalQuarter" msprop:FriendlyName="FiscalQuarter" type="xs:unsignedByte" minOccurs="0" />
+                      <xs:element name="FiscalYear" msprop:design-time-name="d767fc10-ffdf-4488-b8e3-b32e36a5c2a8" msprop:DbColumnName="FiscalYear" msprop:FriendlyName="FiscalYear" type="xs:short" minOccurs="0" />
+                      <xs:element name="FiscalSemester" msprop:design-time-name="07f540c9-076c-43f7-b1d5-55b24eb59029" msprop:DbColumnName="FiscalSemester" msprop:FriendlyName="FiscalSemester" type="xs:unsignedByte" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="dw_DIMVendor" msprop:design-time-name="f6f1a31e-0b6b-4e6c-b360-b1fa348b6678" msprop:FriendlyName="DIMVendor" msprop:DbSchemaName="dw" msprop:DbTableName="DIMVendor" msprop:TableType="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="VendorKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="d88aae14-48f9-43a1-b78e-3da24f0c1e2b" msprop:DbColumnName="VendorKey" msprop:FriendlyName="VendorKey" type="xs:int" />
+                      <xs:element name="GeographyKey" msprop:design-time-name="2630fa7a-d6fb-47ad-898f-72991cc7bd7a" msprop:DbColumnName="GeographyKey" msprop:FriendlyName="GeographyKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="VendorID" msprop:design-time-name="5d548345-19ef-495c-8bde-6bf7145c7326" msprop:DbColumnName="VendorID" msprop:FriendlyName="VendorID" type="xs:int" minOccurs="0" />
+                      <xs:element name="VendorName" msprop:design-time-name="800b34f9-3b0a-46da-bd15-bdc83e791ffc" msprop:DbColumnName="VendorName" msprop:FriendlyName="VendorName" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="50" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="CreditRating" msprop:design-time-name="50ae83b4-db73-42f4-bb06-45af4d6c0458" msprop:DbColumnName="CreditRating" msprop:FriendlyName="CreditRating" type="xs:unsignedByte" minOccurs="0" />
+                      <xs:element name="ActiveFlag" msprop:design-time-name="d3a86de9-d4d3-4ac8-8057-96df24add69e" msprop:DbColumnName="ActiveFlag" msprop:FriendlyName="ActiveFlag" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="PreferredVendorStatus" msprop:design-time-name="ab014ebd-e20f-495e-a2df-aeb6e1828439" msprop:DbColumnName="PreferredVendorStatus" msprop:FriendlyName="PreferredVendorStatus" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="ActiveFrom" msdata:ReadOnly="true" msprop:design-time-name="207d4eea-2e92-46f0-9b2e-85a24c288f1f" msprop:DbColumnName="ActiveFrom" msprop:FriendlyName="ActiveFrom" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="ActiveTo" msprop:design-time-name="8cbce4fa-8f03-445b-99fb-cf3f74300459" msprop:DbColumnName="ActiveTo" msprop:FriendlyName="ActiveTo" type="xs:dateTime" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="dw_DIMProduct" msprop:design-time-name="052a5c2f-f6c1-4659-b42a-90338f6470c1" msprop:FriendlyName="DIMProduct" msprop:DbSchemaName="dw" msprop:DbTableName="DIMProduct" msprop:TableType="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="ProductKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="00a14ea9-aa9a-436f-84d3-858680914d5b" msprop:DbColumnName="ProductKey" msprop:FriendlyName="ProductKey" type="xs:int" />
+                      <xs:element name="SubCategoryKey" msprop:design-time-name="17703148-3760-48c8-8edd-5915544f004c" msprop:DbColumnName="SubCategoryKey" msprop:FriendlyName="SubCategoryKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="ProductID" msprop:design-time-name="5e56ff94-9cdb-4ce6-8da3-b0dd55abaa74" msprop:DbColumnName="ProductID" msprop:FriendlyName="ProductID" type="xs:int" minOccurs="0" />
+                      <xs:element name="ProductName" msprop:design-time-name="74da375a-ffc9-4832-9059-911baa163afe" msprop:DbColumnName="ProductName" msprop:FriendlyName="ProductName" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="50" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="FinishedGoodsFlag" msprop:design-time-name="89b8e70e-ac50-4c50-ba81-5d670a6a8266" msprop:DbColumnName="FinishedGoodsFlag" msprop:FriendlyName="FinishedGoodsFlag" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="ReorderPoint" msprop:design-time-name="b3cd0e93-4eee-411c-9a1c-fcb263091423" msprop:DbColumnName="ReorderPoint" msprop:FriendlyName="ReorderPoint" type="xs:short" minOccurs="0" />
+                      <xs:element name="ProductNumber" msprop:design-time-name="92ce644d-def8-4fbc-b582-5d8eb6b29b27" msprop:DbColumnName="ProductNumber" msprop:FriendlyName="ProductNumber" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="25" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="MakeFlag" msprop:design-time-name="5665b8b9-e7a1-4b03-ae65-6d9f62b45f5e" msprop:DbColumnName="MakeFlag" msprop:FriendlyName="MakeFlag" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="ActiveFrom" msdata:ReadOnly="true" msprop:design-time-name="9c946ee8-f823-4126-8733-ba1b480aad1b" msprop:DbColumnName="ActiveFrom" msprop:FriendlyName="ActiveFrom" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="ActiveTo" msprop:design-time-name="84b09126-d5fc-4e7b-b9d8-d916ca2f110e" msprop:DbColumnName="ActiveTo" msprop:FriendlyName="ActiveTo" type="xs:dateTime" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="dw_DIMLocation" msprop:design-time-name="a92bb501-65ac-469f-87b2-24d3e786da09" msprop:FriendlyName="DIMLocation" msprop:DbSchemaName="dw" msprop:DbTableName="DIMLocation" msprop:TableType="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="LocationKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="dbe4ed76-81c3-4354-be81-517b93b85149" msprop:DbColumnName="LocationKey" msprop:FriendlyName="LocationKey" type="xs:int" />
+                      <xs:element name="LocationID" msprop:design-time-name="c741ebf2-4d47-4b11-a274-c90497d219b4" msprop:DbColumnName="LocationID" msprop:FriendlyName="LocationID" type="xs:short" minOccurs="0" />
+                      <xs:element name="NameLocation" msprop:design-time-name="15c038ee-2f9c-49d2-9169-b8537369b4e3" msprop:DbColumnName="NameLocation" msprop:FriendlyName="NameLocation" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="50" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="ActiveFrom" msdata:ReadOnly="true" msprop:design-time-name="03018100-0e71-46ba-a0cf-8824df6f9810" msprop:DbColumnName="ActiveFrom" msprop:FriendlyName="ActiveFrom" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="ActiveTo" msprop:design-time-name="cb057dd9-f18d-46ce-b2b1-196baf98d1ab" msprop:DbColumnName="ActiveTo" msprop:FriendlyName="ActiveTo" type="xs:dateTime" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="dw_DIMGeography" msprop:design-time-name="6d408dc0-be8d-45fe-b4c7-ecfac863d104" msprop:FriendlyName="DIMGeography" msprop:DbSchemaName="dw" msprop:DbTableName="DIMGeography" msprop:TableType="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="GeographyKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="99963426-04b7-451d-b4d5-5a4997380408" msprop:DbColumnName="GeographyKey" msprop:FriendlyName="GeographyKey" type="xs:int" />
+                      <xs:element name="AddressID" msprop:design-time-name="1066c253-387e-4e84-a1a2-10e60cd3c1f9" msprop:DbColumnName="AddressID" msprop:FriendlyName="AddressID" type="xs:int" minOccurs="0" />
+                      <xs:element name="City" msprop:design-time-name="ba3cc356-43f2-4140-8958-ca1f50abc697" msprop:DbColumnName="City" msprop:FriendlyName="City" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="30" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="PostalCode" msprop:design-time-name="b08dd042-e463-46af-9628-639d211bb21b" msprop:DbColumnName="PostalCode" msprop:FriendlyName="PostalCode" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="15" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="CountryRegionCode" msprop:design-time-name="f71a6724-24fd-4f6b-a005-8d8241aa742f" msprop:DbColumnName="CountryRegionCode" msprop:FriendlyName="CountryRegionCode" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="3" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="NameCountry" msprop:design-time-name="2a51aa21-70ae-4bb8-a891-04dc69a77d38" msprop:DbColumnName="NameCountry" msprop:FriendlyName="NameCountry" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="50" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="ActiveFrom" msdata:ReadOnly="true" msprop:design-time-name="e46c6538-e68a-4bfe-a1c5-1189f26bb62b" msprop:DbColumnName="ActiveFrom" msprop:FriendlyName="ActiveFrom" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="ActiveTo" msprop:design-time-name="a03e11bb-811e-4846-a52e-1ac881a5051b" msprop:DbColumnName="ActiveTo" msprop:FriendlyName="ActiveTo" type="xs:dateTime" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="dw_DIMSubcategory" msprop:design-time-name="b3830395-409a-4825-9e2a-9af36fb57690" msprop:FriendlyName="DIMSubcategory" msprop:DbSchemaName="dw" msprop:DbTableName="DIMSubcategory" msprop:TableType="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="SubCategoryKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="dfa82469-ca92-4d46-a2a9-d52e75f6e887" msprop:DbColumnName="SubCategoryKey" msprop:FriendlyName="SubCategoryKey" type="xs:int" />
+                      <xs:element name="CategoryKey" msprop:design-time-name="4d70d653-8805-4c5c-953a-30606f51b3dc" msprop:DbColumnName="CategoryKey" msprop:FriendlyName="CategoryKey" type="xs:int" minOccurs="0" />
+                      <xs:element name="ProductSubcategoryID" msprop:design-time-name="227454bc-adac-4dcb-bfdf-b7e61eb265d7" msprop:DbColumnName="ProductSubcategoryID" msprop:FriendlyName="ProductSubcategoryID" type="xs:int" minOccurs="0" />
+                      <xs:element name="NameSubCategory" msprop:design-time-name="9c29dc77-e979-4b9d-9fbb-306e244ecca7" msprop:DbColumnName="NameSubCategory" msprop:FriendlyName="NameSubCategory" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="50" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="ActiveFrom" msdata:ReadOnly="true" msprop:design-time-name="85bc525e-071f-427a-9da5-dce7a31af60b" msprop:DbColumnName="ActiveFrom" msprop:FriendlyName="ActiveFrom" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="ActiveTo" msprop:design-time-name="a852e58e-6c39-412a-bced-3c6fe0cd2a2f" msprop:DbColumnName="ActiveTo" msprop:FriendlyName="ActiveTo" type="xs:dateTime" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="dw_DIMCategory" msprop:design-time-name="eefd4dd2-84b0-4529-9c7c-469c829111c0" msprop:FriendlyName="DIMCategory" msprop:DbSchemaName="dw" msprop:DbTableName="DIMCategory" msprop:TableType="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="CategoryKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="cfa75fe8-a94d-4d3b-8981-0b711192f12d" msprop:DbColumnName="CategoryKey" msprop:FriendlyName="CategoryKey" type="xs:int" />
+                      <xs:element name="ProductCategoryID" msprop:design-time-name="3dc2c143-e7d3-4371-b12a-85a12c5f09a9" msprop:DbColumnName="ProductCategoryID" msprop:FriendlyName="ProductCategoryID" type="xs:int" minOccurs="0" />
+                      <xs:element name="NameCategory" msprop:design-time-name="8fc9d30b-1540-4499-92c0-7fb11b46e2ee" msprop:DbColumnName="NameCategory" msprop:FriendlyName="NameCategory" minOccurs="0">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:maxLength value="50" />
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                      <xs:element name="ActiveFrom" msdata:ReadOnly="true" msprop:design-time-name="96cf43e9-6730-4908-bd61-91e4ed4bae05" msprop:DbColumnName="ActiveFrom" msprop:FriendlyName="ActiveFrom" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="ActiveTo" msprop:design-time-name="ba2db69e-53e6-46dd-8bda-2774fa0887ef" msprop:DbColumnName="ActiveTo" msprop:FriendlyName="ActiveTo" type="xs:dateTime" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+            <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+              <xs:selector xpath=".//dw_DIMTime" />
+              <xs:field xpath="TimeKey" />
+            </xs:unique>
+            <xs:unique name="dw_DIMVendor_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+              <xs:selector xpath=".//dw_DIMVendor" />
+              <xs:field xpath="VendorKey" />
+            </xs:unique>
+            <xs:unique name="dw_DIMProduct_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+              <xs:selector xpath=".//dw_DIMProduct" />
+              <xs:field xpath="ProductKey" />
+            </xs:unique>
+            <xs:unique name="dw_DIMLocation_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+              <xs:selector xpath=".//dw_DIMLocation" />
+              <xs:field xpath="LocationKey" />
+            </xs:unique>
+            <xs:unique name="dw_DIMGeography_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+              <xs:selector xpath=".//dw_DIMGeography" />
+              <xs:field xpath="GeographyKey" />
+            </xs:unique>
+            <xs:unique name="dw_DIMSubcategory_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+              <xs:selector xpath=".//dw_DIMSubcategory" />
+              <xs:field xpath="SubCategoryKey" />
+            </xs:unique>
+            <xs:unique name="dw_DIMCategory_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+              <xs:selector xpath=".//dw_DIMCategory" />
+              <xs:field xpath="CategoryKey" />
+            </xs:unique>
+            <xs:keyref name="FK_DIMSubcategory_DIMCategory" refer="dw_DIMCategory_Constraint1">
+              <xs:selector xpath=".//dw_DIMSubcategory" />
+              <xs:field xpath="CategoryKey" />
+            </xs:keyref>
+            <xs:keyref name="FK_DIMProduct_DIMSubcategory" refer="dw_DIMSubcategory_Constraint1">
+              <xs:selector xpath=".//dw_DIMProduct" />
+              <xs:field xpath="SubCategoryKey" />
+            </xs:keyref>
+            <xs:keyref name="FK_DIMVendor_DIMGeography" refer="dw_DIMGeography_Constraint1">
+              <xs:selector xpath=".//dw_DIMVendor" />
+              <xs:field xpath="GeographyKey" />
+            </xs:keyref>
+            <xs:keyref name="FK_FACTRatingVendor_DIMTime" refer="Constraint1">
+              <xs:selector xpath=".//dw_FACTRatingVendor" />
+              <xs:field xpath="TimeKey" />
+            </xs:keyref>
+            <xs:keyref name="FK_FACTRatingVendor_DIMVendor" refer="dw_DIMVendor_Constraint1">
+              <xs:selector xpath=".//dw_FACTRatingVendor" />
+              <xs:field xpath="VendorKey" />
+            </xs:keyref>
+            <xs:keyref name="FK_FACTRatingVendor_DIMProduct" refer="dw_DIMProduct_Constraint1">
+              <xs:selector xpath=".//dw_FACTRatingVendor" />
+              <xs:field xpath="ProductKey" />
+            </xs:keyref>
+            <xs:keyref name="FK_FACTInventory_DIMLocation" refer="dw_DIMLocation_Constraint1">
+              <xs:selector xpath=".//dw_FACTInventory" />
+              <xs:field xpath="LocationKey" />
+            </xs:keyref>
+            <xs:keyref name="FK_FACTInventory_DIMProduct" refer="dw_DIMProduct_Constraint1">
+              <xs:selector xpath=".//dw_FACTInventory" />
+              <xs:field xpath="ProductKey" />
+            </xs:keyref>
+            <xs:keyref name="FK_FACTInventory_DIMTime" refer="Constraint1">
+              <xs:selector xpath=".//dw_FACTInventory" />
+              <xs:field xpath="TimeKey" />
+            </xs:keyref>
+            <xs:keyref name="FK_FACTDependentVendor_DIMVendor" refer="dw_DIMVendor_Constraint1">
+              <xs:selector xpath=".//dw_FACTDependentVendor" />
+              <xs:field xpath="VendorKey" />
+            </xs:keyref>
+            <xs:keyref name="FK_FACTDependentVendor_DIMTime" refer="Constraint1">
+              <xs:selector xpath=".//dw_FACTDependentVendor" />
+              <xs:field xpath="TimeKey" />
+            </xs:keyref>
+            <xs:keyref name="FK_FACTDependentVendor_DIMProduct" refer="dw_DIMProduct_Constraint1">
+              <xs:selector xpath=".//dw_FACTDependentVendor" />
+              <xs:field xpath="ProductKey" />
+            </xs:keyref>
+          </xs:element>
+        </xs:schema>
+        <DW_x0020_Purchasing xmlns="" />
+      </Schema>
+    </DataSourceView>
+  </DataSourceViews>
+</Database>
